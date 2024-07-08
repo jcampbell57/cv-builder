@@ -1,6 +1,42 @@
+/* Preview font */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+.eb-garamond-normal {
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.eb-garamond-italic {
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.eb-garamond-bold {
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.eb-garamond-bold-italic {
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Page styling */
+
 :root {
   --background-color: grey;
-  --font-color: whitesmoke
+  --font-color: whitesmoke;
+  --header-height: min(6vw, 60px);
+  --footer-height: 3rem;
 }
 
 body {
