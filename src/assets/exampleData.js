@@ -26,7 +26,7 @@ const data = {
     {
       key: 'edu1',
       school: 'California State University',
-      location: 'Turlock, CA',
+      location: 'Central Valley, CA',
       completionDate: 'May, 2017',
       degree: 'BS, Business Administration, Finance'
     },
