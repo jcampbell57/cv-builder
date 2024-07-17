@@ -31,10 +31,12 @@ function Content() {
     }
 
     if (website.length > 0) {
-      details.push(website)
+      const websiteLink = <a href={`${website}`}>{website}</a>
+      details.push(websiteLink)
     }
 
-    return details.join(' ❖ ')
+    // return details.join(' ❖ ')
+    return details.map((detail, index) => <span key={index}>{detail}</span>).reduce((prev, curr) => [prev, ' ❖ ', curr])
   }
 
   return (
