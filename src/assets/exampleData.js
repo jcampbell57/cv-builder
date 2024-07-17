@@ -39,7 +39,7 @@ const data = {
       startDate: 'Jan. 2024',
       endDate: 'Present',
       location: 'Remote',
-      descriptions: [
+      details: [
         {
           key: 'exp1desc1',
           text: 'Contribute to and help maintain a large web application built with Ruby on Rails, JavaScript, and React.',
@@ -53,7 +53,7 @@ const data = {
       startDate: 'July 2018',
       endDate: 'May 2023',
       location: 'Central Valley, CA',
-      descriptions: [
+      details: [
         {
           key: 'exp2desc1',
           text: 'Served as grade level leader and member of the Instructional Leadership Team.',
@@ -75,7 +75,7 @@ const data = {
       startDate: 'Nov. 2009',
       endDate: 'Jan. 2017',
       location: 'Central Valley, CA',
-      descriptions: [
+      details: [
         {
           key: 'exp3desc1',
           text: 'Oversaw production as the company grew from servicing 15 clients to more than 120.',
@@ -101,7 +101,7 @@ const data = {
       ],
       githubRepo: 'https://github.com/jcampbell57/odin-book-v2',
       livePreview: 'https://odin-book-v2.fly.dev/',
-      descriptions: [
+      details: [
         {
           key: 'proj1desc1',
           text: 'A full-stack social media app built with Ruby on Rails; utilizing a PostgreSQL database; hosted through Fly.io',
@@ -128,7 +128,7 @@ const data = {
       ],
       githubRepo: 'https://github.com/jcampbell57/naval-warfare',
       livePreview: 'https://jcampbell57.github.io/naval-warfare/',
-      descriptions: [
+      details: [
         {
           key: 'proj2desc1',
           text: 'A web app version of the classic board game “Battleship” with built in computer AI',
@@ -154,7 +154,7 @@ const data = {
       ],
       githubRepo: 'https://github.com/jcampbell57/weather-app',
       livePreview: 'https://jcampbell57.github.io/weather-app/',
-      descriptions: [
+      details: [
         {
           key: 'proj3desc1',
           text: 'A web-based weather application that leverages WeatherAPI to deliver real-time weather information',
@@ -176,7 +176,7 @@ const data = {
       ],
       githubRepo: 'https://github.com/jcampbell57/odin-todo-list',
       livePreview: 'https://jcampbell57.github.io/odin-todo-list/',
-      descriptions: [
+      details: [
         {
           key: 'proj4desc1',
           text: 'A Todo List web app featuring project categorization and localStorage utilization',
@@ -197,7 +197,7 @@ const data = {
       ],
       githubRepo: 'https://github.com/jcampbell57/odin-todo-list',
       livePreview: 'https://replit.com/@jcampbell57/Chess#main.rb',
-      descriptions: [
+      details: [
         {
           key: 'proj4desc1',
           text: 'A Chess game utilizing a command-line interface with built in computer AI',

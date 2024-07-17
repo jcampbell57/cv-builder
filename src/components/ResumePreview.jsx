@@ -32,8 +32,8 @@ function ResumePreview({
                     <span className="previewListSubheader eb-garamond-italic">{exp.location}</span>
                   </div>
                   <ul className="bulletedList">
-                    {exp.descriptions.map(desc => (
-                      <li key={desc.key}>{desc.text}</li>
+                    {exp.details.map(detail => (
+                      <li key={detail.key}>{detail.text}</li>
                     ))}
                   </ul>
                 </li>
@@ -57,8 +57,8 @@ function ResumePreview({
                     <a href={proj.githubRepo} className="previewListLink eb-garamond-bold-italic">GitHub Link</a>
                   </div>
                   <ul className="bulletedList">
-                    {proj.descriptions.map(desc => (
-                      <li key={desc.key}>{desc.text}</li>
+                    {proj.details.map(detail => (
+                      <li key={detail.key}>{detail.text}</li>
                     ))}
                   </ul>
                 </li>
@@ -97,7 +97,7 @@ function ResumePreview({
             <h3 className="previewSectionHeader eb-garamond-bold">SKILLS & INTERESTS</h3>
             <ul className="bulletedList">
               <li className="previewSkills">
-                  <span className="eb-garamond-bold">Skills: </span>{skills.join(', ')}
+                <span className="eb-garamond-bold">Skills: </span>{skills.join(', ')}
               </li>
               <li className="previewInterests">
               <span className="eb-garamond-bold">Interests: </span>{interests.join(', ')}
