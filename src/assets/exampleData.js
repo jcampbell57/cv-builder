@@ -199,11 +199,11 @@ const data = {
       livePreview: 'https://replit.com/@jcampbell57/Chess#main.rb',
       details: [
         {
-          key: 'proj4desc1',
+          key: 'proj5desc1',
           text: 'A Chess game utilizing a command-line interface with built in computer AI',
         },
         {
-          key: 'proj4desc2',
+          key: 'proj5desc2',
           text: 'Leverages RSpec to test various functionalities',
         },
       ],
