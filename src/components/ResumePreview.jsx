@@ -92,7 +92,7 @@ function ResumePreview({
           </section>
         )}
 
-        {skills.length > 0 || interests.length > 0 && (
+        {(skills.length > 0 || interests.length > 0) && (
           <section className="skillsInterestPreview">
             <h3 className="previewSectionHeader eb-garamond-bold">SKILLS & INTERESTS</h3>
             <ul className="bulletedList">
