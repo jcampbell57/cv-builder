@@ -81,6 +81,11 @@ function ResumePreview({
                     <span className="previewListSubheader eb-garamond-italic">{edu.degree}</span>
                     <span className="previewListSubheader eb-garamond-italic">{edu.location}</span>
                   </div>
+                  <ul className="bulletedList">
+                    {edu.details.map(detail => (
+                      <li key={detail.key}>{detail.text}</li>
+                    ))}
+                  </ul>
                 </li>
               ))}
             </ul>
