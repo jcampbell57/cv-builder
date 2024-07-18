@@ -15,6 +15,19 @@ function Content() {
   const [experience, setExperience] = useState(exampleData.experience)
   const [projects, setProjects] = useState(exampleData.projects)
 
+  function clearForm() {
+    setName('')
+    setEmail('')
+    setPhone('')
+    setWebsite('')
+    setLocation('')
+    setSkills([])
+    setInterests([])
+    setEducation([])
+    setExperience([])
+    setProjects([])
+  }
+
   function userInfo() {
     const details = []
 
@@ -41,7 +54,29 @@ function Content() {
 
   return (
     <div role='main' className='contentContainer'>
-      <ResumeForm />
+      <ResumeForm
+        name={name}
+        email={email}
+        phone={phone}
+        website={website}
+        location={location}
+        skills={skills}
+        interests={interests}
+        education={education}
+        experience={experience}
+        projects={projects}
+        setName={setName}
+        setEmail={setEmail}
+        setPhone={setPhone}
+        setWebsite={setWebsite}
+        setLocation={setLocation}
+        setSkills={setSkills}
+        setInterests={setInterests}
+        setEducation={setEducation}
+        setExperience={setExperience}
+        setProjects={setProjects}
+        clearForm={clearForm}
+      />
       <ResumePreview
         name={name}
         userInfo={userInfo()}
