@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const data = {
   general: {
     name: 'JCampbell57',
@@ -24,7 +26,7 @@ const data = {
   },
   education: [
     {
-      key: 'edu1',
+      key: uuidv4(),
       school: 'California State University',
       location: 'Central Valley, CA',
       completionDate: 'May, 2017',
@@ -33,7 +35,7 @@ const data = {
   ],
   experience: [
     {
-      key: 'exp1',
+      key: uuidv4(),
       employer: 'Example Workplace',
       title: 'Full-Stack Software Developer',
       startDate: 'Jan. 2024',
@@ -41,13 +43,13 @@ const data = {
       location: 'Remote',
       details: [
         {
-          key: 'exp1desc1',
+          key: uuidv4(),
           text: 'Contribute to and help maintain a large web application built with Ruby on Rails, JavaScript, and React.',
         },
       ],
     },
     {
-      key: 'exp2',
+      key: uuidv4(),
       employer: 'Example Workplace',
       title: 'Math Teacher',
       startDate: 'July 2018',
@@ -55,21 +57,21 @@ const data = {
       location: 'Central Valley, CA',
       details: [
         {
-          key: 'exp2desc1',
+          key: uuidv4(),
           text: 'Served as grade level leader and member of the Instructional Leadership Team.',
         },
         {
-          key: 'exp2desc2',
+          key: uuidv4(),
           text: 'Implemented e-learning technologies and blended learning strategies to promote student learning.',
         },
         {
-          key: 'exp2desc3',
+          key: uuidv4(),
           text: 'Measured student progress and used assessment data to improve instruction.',
         },
       ],
     },
     {
-      key: 'exp3',
+      key: uuidv4(),
       employer: 'Example Workplace',
       title: 'Production Manager',
       startDate: 'Nov. 2009',
@@ -77,11 +79,11 @@ const data = {
       location: 'Central Valley, CA',
       details: [
         {
-          key: 'exp3desc1',
+          key: uuidv4(),
           text: 'Oversaw production as the company grew from servicing 15 clients to more than 120.',
         },
         {
-          key: 'exp3desc2',
+          key: uuidv4(),
           text: 'Learned and integrated innovative technologies to expand product offering and increase profitability.',
         },
       ],
@@ -89,7 +91,7 @@ const data = {
   ],
   projects: [
     {
-      key: 'proj1',
+      key: uuidv4(),
       name: 'odinbook',
       skills: [
         'Ruby on Rails',
@@ -103,21 +105,21 @@ const data = {
       livePreview: 'https://odin-book-v2.fly.dev/',
       details: [
         {
-          key: 'proj1desc1',
+          key: uuidv4(),
           text: 'A full-stack social media app built with Ruby on Rails; utilizing a PostgreSQL database; hosted through Fly.io',
         },
         {
-          key: 'proj1desc2',
+          key: uuidv4(),
           text: 'Utilizes OAuth for user authentication; features connecting, posting, commenting, and liking functionality',
         },
         {
-          key: 'proj1desc3',
+          key: uuidv4(),
           text: 'Features real time updates of the timeline via Actioncable; infinite scroll functionality via the Pagy gem',
         },
       ],
     },
     {
-      key: 'proj2',
+      key: uuidv4(),
       name: 'Naval Warfare',
       skills: [
         'JavaScript', 
@@ -130,21 +132,21 @@ const data = {
       livePreview: 'https://jcampbell57.github.io/naval-warfare/',
       details: [
         {
-          key: 'proj2desc1',
+          key: uuidv4(),
           text: 'A web app version of the classic board game “Battleship” with built in computer AI',
         },
         {
-          key: 'proj2desc2',
+          key: uuidv4(),
           text: 'Features responsive UI/UX for accessibility with any screen size',
         },
         {
-          key: 'proj2desc3',
+          key: uuidv4(),
           text: 'Leverages Jest to test various functionalities',
         },
       ],
     },
     {
-      key: 'proj3',
+      key: uuidv4(),
       name: 'Weatherserve',
       skills: [
         'JavaScript', 
@@ -156,17 +158,17 @@ const data = {
       livePreview: 'https://jcampbell57.github.io/weather-app/',
       details: [
         {
-          key: 'proj3desc1',
+          key: uuidv4(),
           text: 'A web-based weather application that leverages WeatherAPI to deliver real-time weather information',
         },
         {
-          key: 'proj3desc2',
+          key: uuidv4(),
           text: 'Features 5-day forecast and dynamic icons dependant on weather conditions',
         },
       ],
     },
     {
-      key: 'proj4',
+      key: uuidv4(),
       name: 'Things To Do',
       skills: [
         'JavaScript', 
@@ -178,17 +180,17 @@ const data = {
       livePreview: 'https://jcampbell57.github.io/odin-todo-list/',
       details: [
         {
-          key: 'proj4desc1',
+          key: uuidv4(),
           text: 'A Todo List web app featuring project categorization and localStorage utilization',
         },
         {
-          key: 'proj4desc2',
+          key: uuidv4(),
           text: 'Makes use of object-oriented principles for increased maintainability and extensibility',
         },
       ],
     },
     {
-      key: 'proj5',
+      key: uuidv4(),
       name: 'Chess',
       skills: [
         'Ruby', 
@@ -199,11 +201,11 @@ const data = {
       livePreview: 'https://replit.com/@jcampbell57/Chess#main.rb',
       details: [
         {
-          key: 'proj5desc1',
+          key: uuidv4(),
           text: 'A Chess game utilizing a command-line interface with built in computer AI',
         },
         {
-          key: 'proj5desc2',
+          key: uuidv4(),
           text: 'Leverages RSpec to test various functionalities',
         },
       ],
