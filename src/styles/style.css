@@ -37,6 +37,8 @@
   --font-color: whitesmoke;
   --header-height: min(6vw, 60px);
   --footer-height: 3rem;
+  --hover: hsl(0, 0%, 96%, 0.2);
+  --active: hsl(0, 0%, 96%, 0.4);
 }
 
 body {
@@ -84,6 +86,7 @@ header {
 
 .contentContainer {
   flex-grow: 1;
+  max-height: calc(100vh - var(--header-height) - var(--footer-height));
 
   display: flex;
 }
@@ -93,6 +96,148 @@ header {
   .formContainer {
     background-color: slategray;
     width: 35vw;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    padding: 2vw;
+    overflow-y: scroll;
+    box-sizing: border-box;
+  }
+
+  .btnContainer {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .btn {
+    padding: 0.5vw 1vw;
+    /* border: none;
+    border-radius: 4px; */
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .mainFieldset {
+    border: 2px solid var(--font-color);
+    border-radius: 6px;
+    padding: 1vw;
+    gap: 1vw;
+  }
+
+  fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdownContainer {
+    cursor: pointer;
+    font-size: 1.3rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0.5rem;
+    border-radius: calc(1rem + 0.25rem);
+  }
+
+  .dropdownContainer:hover {
+    background-color: var(--hover);
+  }
+
+  .dropdownContainer:active {
+    background-color: var(--active);
+  }
+
+  legend {
+    font-weight: bold;
+  }
+
+  .chevronIcon {
+    width: 1.3rem;
+    /* whitesmoke color: */
+    filter: invert(99%) sepia(8%) saturate(128%) hue-rotate(233deg) brightness(112%) contrast(92%);
+  }
+
+  .formSectionHeader {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .formSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    /* margin-bottom: 1rem; */
+  }
+
+  .flexLabel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .formListElement {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+  }
+
+  .customBullet {
+    font-size: 0.6rem;
+  }
+  
+  .formListElement > input,
+  .formListElement > textarea {
+    flex-grow: 1;
+  }
+  
+  input,
+  textarea {
+    padding: 3px 6px;
+
+    border: 1px solid black;
+    border-radius: 4px;
+  }
+
+  .deleteBtn {
+    display: flex;
+
+    background: none;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .deleteBtn:hover > .deleteIcon {
+    /* pink color: */
+    filter: invert(72%) sepia(71%) saturate(261%) hue-rotate(306deg) brightness(103%) contrast(106%);
+  }
+
+  .deleteBtn:active > .deleteIcon {
+    /* firebrick color */
+    filter: invert(17%) sepia(39%) saturate(3711%) hue-rotate(340deg) brightness(122%) contrast(103%);
+  }
+
+  .deleteIcon {
+    width: 1.1rem;
+    /* whitesmoke color: */
+    filter: invert(99%) sepia(8%) saturate(128%) hue-rotate(233deg) brightness(112%) contrast(92%);
+  }
+
+  .formSeperator {
+    width: 100%;
+    height: 2px;
+    border: none;
+    background-color: var(--font-color);
   }
 
   /* Preview styling */
@@ -131,7 +276,7 @@ header {
 
   .previewUserInfo {
     font-size: 1rem;
-    font-size: clamp(0.3rem, 1.4vw, 0.9rem);
+    font-size: clamp(0.3rem, 1.4vw, 0.88rem);
     border-bottom: 1px solid black;
     margin-bottom: clamp(0.25rem, 1vw, 0.5rem);
   }
@@ -141,7 +286,7 @@ header {
     margin-bottom: 0.2rem
   }
 
-  .bulletedList{
+  .bulletedList {
     list-style-type: square;
     list-style-position: inside;
   }
