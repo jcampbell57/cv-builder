@@ -108,14 +108,26 @@ function ResumePreview({
 
         {(skills.length > 0 || interests.length > 0) && (
           <section className="skillsInterestPreview">
-            <h3 className="previewSectionHeader eb-garamond-bold">SKILLS & INTERESTS</h3>
+            {(() => {
+              if (skills.length > 0 && interests.length === 0) {
+                return <h3 className="previewSectionHeader eb-garamond-bold">SKILLS</h3>;
+              } else if (skills.length === 0 && interests.length > 0) {
+                return <h3 className="previewSectionHeader eb-garamond-bold">INTERESTS</h3>;
+              } else if (skills.length > 0 && interests.length > 0) {
+                return <h3 className="previewSectionHeader eb-garamond-bold">SKILLS & INTERESTS</h3>;
+              }
+            })()}
             <ul className="bulletedList">
-              <li className="previewSkills">
-                <span className="eb-garamond-bold">Skills: </span>{skills.join(', ')}
-              </li>
-              <li className="previewInterests">
-              <span className="eb-garamond-bold">Interests: </span>{interests.join(', ')}
-              </li>
+              {skills.length > 0 && (
+                <li className="previewSkills">
+                  <span className="eb-garamond-bold">Skills: </span>{skills.join(', ')}
+                </li>
+              )}
+              {interests.length > 0 &&  (
+                <li className="previewInterests">
+                  <span className="eb-garamond-bold">Interests: </span>{interests.join(', ')}
+                </li>
+              )}
             </ul>
           </section>
         )}
