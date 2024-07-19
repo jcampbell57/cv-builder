@@ -55,10 +55,20 @@ function ResumePreview({
                   <div className="projectFlexContainer">
                     <h3 className="previewListHeader eb-garamond-bold">{proj.name}</h3>
                     {/* &nbsp; is a non-breaking space character */}
-                    <span className="previewListSubheader eb-garamond-italic">&nbsp;| {proj.skills.join(', ')}</span>
-                    <a href={proj.livePreview} className="previewListLink rightJustify eb-garamond-bold-italic">Live Depoloyment</a>
-                    <span>&nbsp;|&nbsp;</span>
-                    <a href={proj.githubRepo} className="previewListLink eb-garamond-bold-italic">GitHub Link</a>
+                    {proj.skills.length > 0 && (
+                      <span className="previewListSubheader eb-garamond-italic">&nbsp;| {proj.skills.join(', ')}</span>
+                    )}
+                    <div className="linkContainer rightJustify">
+                      {proj.livePreview.length > 0 && (
+                        <a href={proj.livePreview} className="previewListLink rightJustify eb-garamond-bold-italic">Live Depoloyment</a>
+                      )}
+                      {(proj.livePreview.length > 0 && proj.githubRepo.length > 0) && (
+                        <span>&nbsp;|&nbsp;</span>
+                      )}
+                      {proj.githubRepo.length > 0 && (
+                        <a href={proj.githubRepo} className="previewListLink eb-garamond-bold-italic">GitHub Link</a>
+                      )}
+                    </div>
                   </div>
                   <ul className="bulletedList">
                     {proj.details.map(detail => (
