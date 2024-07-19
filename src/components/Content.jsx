@@ -48,8 +48,9 @@ function Content() {
       details.push(websiteLink)
     }
 
-    // return details.join(' ❖ ')
-    return details.map((detail, index) => <span key={index}>{detail}</span>).reduce((prev, curr) => [prev, ' ❖ ', curr])
+    if (details.length > 0) {
+      return details.map((detail, index) => <span key={index}>{detail}</span>).reduce((prev, curr) => [prev, ' ❖ ', curr])
+    }
   }
 
   return (
