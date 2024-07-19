@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import chevron_down from '../assets/chevron-down.svg'
 import chevron_up from '../assets/chevron-up.svg'
@@ -8,6 +9,12 @@ function EducationFieldset({
   education,
   setEducation,
 }) {
+
+  const [isCollapsed, setIsCollapsed] = useState(true)
+
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed)
+  }
 
   const addEducation = () => {
     const updatedEducation = [...education]
@@ -63,89 +70,93 @@ function EducationFieldset({
 
   return (
     <fieldset className='mainFieldset'>
-      <div className='dropdownContainer'>
+      <div className='dropdownContainer' onClick={toggleCollapse}>
         <legend>Education</legend>
-        <img src={chevron_up} className='chevronIcon'></img>
+        <img src={isCollapsed ? chevron_down : chevron_up} alt={isCollapsed ? 'Expand' : 'Collapse'} className='chevronIcon'></img>
       </div>
-      <hr className='formSeperator' />
-      {education.map((edu, eduIndex) => (
-        <React.Fragment key={edu.key}>
-          <h2 className='formSectionHeader'>{edu.school}</h2>
-          <section className='formSection'>
-            <label htmlFor={`${edu.key}school`} className='flexLabel'>
-              School:
-              <input 
-                type="text"
-                name="school"
-                id={`${edu.key}school`}
-                value={edu.school}
-                onChange={(e) => handleEducationChange(eduIndex, 'school', e.target.value)}
-              />
-            </label>
-            <label htmlFor={`${edu.key}location`} className='flexLabel'>
-              Location:
-              <input 
-                type="text"
-                name="location"
-                id={`${edu.key}location`}
-                value={edu.location}
-                onChange={(e) => handleEducationChange(eduIndex, 'location', e.target.value)}
-              />
-            </label>
-            <label htmlFor={`${edu.key}completionDate`} className='flexLabel'>
-              Completion Date:
-              <input 
-                type="text"
-                name="completionDate"
-                id={`${edu.key}completionDate`}
-                value={edu.completionDate}
-                onChange={(e) => handleEducationChange(eduIndex, 'completionDate', e.target.value)}
-              />
-            </label>
-            <label htmlFor={`${edu.key}degree`} className='flexLabel'>
-              Degree:
-              <input 
-                type="text"
-                name="degree"
-                id={`${edu.key}degree`}
-                value={edu.degree}
-                onChange={(e) => handleEducationChange(eduIndex, 'degree', e.target.value)}
-              />
-            </label>
-            <fieldset>
-              <legend>Details:</legend>
-              <ul>
-                {edu.details.map((detail, detailIndex) => (
-                  <li className='formListElement' key={detail.key}>
-                    <span className="customBullet">■</span>
-                    <textarea rows='3' 
-                      name="details"
-                      id={detail.key}
-                      aria-labelledby="detailsLabel"
-                      value={detail.text}
-                      onChange={(e) => handleDetailChange(eduIndex, detailIndex, e.target.value)}
-                    />
-                    <button type='button' className='deleteBtn' onClick={() => removeDetail(eduIndex, detailIndex)} aria-label="Delete">
-                      <img src={delete_icon} className='deleteIcon' />
-                    </button>
-                  </li>
-                ))}
-              </ul>
-              <br />
-              <div className='btnContainer'>
-                <button type='button' className='btn' onClick={() => addDetail(eduIndex)}>Add detail</button>
-              </div>
-            </fieldset>
-            <div className='btnContainer'>
-              <button type='button' className='btn' onClick={() => removeEducation(eduIndex)}>Remove education</button>
-            </div>
-          </section>
+      {!isCollapsed && (
+        <>
           <hr className='formSeperator' />
-        </React.Fragment>
-      ))}
-      <div className='btnContainer'>
-        <button type='button' className='btn' onClick={addEducation}>Add education</button>
-      </div>
+          {education.map((edu, eduIndex) => (
+            <React.Fragment key={edu.key}>
+              <h2 className='formSectionHeader'>{edu.school}</h2>
+              <section className='formSection'>
+                <label htmlFor={`${edu.key}school`} className='flexLabel'>
+                  School:
+                  <input 
+                    type="text"
+                    name="school"
+                    id={`${edu.key}school`}
+                    value={edu.school}
+                    onChange={(e) => handleEducationChange(eduIndex, 'school', e.target.value)}
+                  />
+                </label>
+                <label htmlFor={`${edu.key}location`} className='flexLabel'>
+                  Location:
+                  <input 
+                    type="text"
+                    name="location"
+                    id={`${edu.key}location`}
+                    value={edu.location}
+                    onChange={(e) => handleEducationChange(eduIndex, 'location', e.target.value)}
+                  />
+                </label>
+                <label htmlFor={`${edu.key}completionDate`} className='flexLabel'>
+                  Completion Date:
+                  <input 
+                    type="text"
+                    name="completionDate"
+                    id={`${edu.key}completionDate`}
+                    value={edu.completionDate}
+                    onChange={(e) => handleEducationChange(eduIndex, 'completionDate', e.target.value)}
+                  />
+                </label>
+                <label htmlFor={`${edu.key}degree`} className='flexLabel'>
+                  Degree:
+                  <input 
+                    type="text"
+                    name="degree"
+                    id={`${edu.key}degree`}
+                    value={edu.degree}
+                    onChange={(e) => handleEducationChange(eduIndex, 'degree', e.target.value)}
+                  />
+                </label>
+                <fieldset>
+                  <legend>Details:</legend>
+                  <ul>
+                    {edu.details.map((detail, detailIndex) => (
+                      <li className='formListElement' key={detail.key}>
+                        <span className="customBullet">■</span>
+                        <textarea rows='3' 
+                          name="details"
+                          id={detail.key}
+                          aria-labelledby="detailsLabel"
+                          value={detail.text}
+                          onChange={(e) => handleDetailChange(eduIndex, detailIndex, e.target.value)}
+                        />
+                        <button type='button' className='deleteBtn' onClick={() => removeDetail(eduIndex, detailIndex)} aria-label="Delete">
+                          <img src={delete_icon} className='deleteIcon' />
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                  <br />
+                  <div className='btnContainer'>
+                    <button type='button' className='btn' onClick={() => addDetail(eduIndex)}>Add detail</button>
+                  </div>
+                </fieldset>
+                <div className='btnContainer'>
+                  <button type='button' className='btn' onClick={() => removeEducation(eduIndex)}>Remove education</button>
+                </div>
+              </section>
+              <hr className='formSeperator' />
+            </React.Fragment>
+          ))}
+          <div className='btnContainer'>
+            <button type='button' className='btn' onClick={addEducation}>Add education</button>
+          </div>
+        </>
+      )}
     </fieldset>
   )
 }

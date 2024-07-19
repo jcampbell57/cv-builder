@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import chevron_down from '../assets/chevron-down.svg'
 import chevron_up from '../assets/chevron-up.svg'
@@ -8,6 +9,12 @@ function ProjectsFieldset({
   projects,
   setProjects,
 }) {
+
+  const [isCollapsed, setIsCollapsed] = useState(true)
+
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed)
+  }
 
   const addProject = () => {
     const updatedProjects = [...projects]
@@ -82,104 +89,108 @@ function ProjectsFieldset({
 
   return (
     <fieldset className='mainFieldset'>
-      <div className='dropdownContainer'>
+      <div className='dropdownContainer' onClick={toggleCollapse}>
         <legend>Projects</legend>
-        <img src={chevron_up} className='chevronIcon'></img>
+        <img src={isCollapsed ? chevron_down : chevron_up} alt={isCollapsed ? 'Expand' : 'Collapse'} className='chevronIcon'></img>
       </div>
-      <hr className='formSeperator' />
-      {projects.map((proj, projIndex) => (
-        <React.Fragment key={proj.key}>
-          <h2 className='formSectionHeader'>{proj.name}</h2>
-          <section className='formSection'>
-            <label htmlFor={`${proj.key}name`} className='flexLabel'>
-              Name:
-              <input 
-                type="text"
-                name="name"
-                id={`${proj.key}name`}
-                value={proj.name}
-                onChange={(e) => handleProjectChange(projIndex, 'name', e.target.value)}
-              />
-            </label>
-            <label htmlFor={`${proj.key}githubRepo`} className='flexLabel'>
-              GitHub Repo:
-              <input 
-                type="url"
-                name="githubRepo"
-                id={`${proj.key}githubRepo`}
-                value={proj.githubRepo}
-                onChange={(e) => handleProjectChange(projIndex, 'githubRepo', e.target.value)}
-              />
-            </label>
-            <label htmlFor={`${proj.key}livePreview`} className='flexLabel'>
-              Live Preview URL:
-              <input 
-                type="url"
-                name="livePreview"
-                id={`${proj.key}livePreview`}
-                value={proj.livePreview}
-                onChange={(e) => handleProjectChange(projIndex, 'livePreview', e.target.value)}
-              />
-            </label>
-            <fieldset>
-              <legend>Skills:</legend>
-              <ul>
-                {proj.skills.map((skill, skillIndex) => (
-                  <li className='formListElement' key={skillIndex}>
-                    <span className="customBullet">■</span>
-                    <input 
-                      type="text"
-                      name="skills"
-                      id={`${proj.key}Skill${skillIndex}`}
-                      aria-labelledby="skillsLabel"
-                      value={skill}
-                      onChange={(e) => handleSkillChange(projIndex, skillIndex, e.target.value)}
-                    />
-                    <button type='button' className='deleteBtn' onClick={() => removeSkill(projIndex, skillIndex)} aria-label="Delete">
-                      <img src={delete_icon} className='deleteIcon' />
-                    </button>
-                  </li>
-                ))}            
-              </ul>
-              <br />
-              <div className='btnContainer'>
-                <button type='button' className='btn' onClick={() => addSkill(projIndex)}>Add skill</button>
-              </div>
-            </fieldset>
-            <fieldset>
-              <legend>Details:</legend>
-              <ul>
-                {proj.details.map((detail, detailIndex) => (
-                  <li className='formListElement' key={detail.key}>
-                    <span className="customBullet">■</span>
-                    <textarea rows='4' 
-                      name="details"
-                      id={detail.key}
-                      aria-labelledby="detailsLabel"
-                      value={detail.text}
-                      onChange={(e) => handleDetailChange(projIndex, detailIndex, e.target.value)}
-                    />
-                    <button type='button' className='deleteBtn' onClick={() => removeDetail(projIndex, detailIndex)} aria-label="Delete">
-                      <img src={delete_icon} className='deleteIcon' />
-                    </button>
-                  </li>
-                ))}          
-              </ul>
-              <br />
-              <div className='btnContainer'>
-                <button type='button' className='btn' onClick={() => addDetail(projIndex)}>Add detail</button>
-              </div>
-            </fieldset>
-            <div className='btnContainer'>
-              <button type='button' className='btn' onClick={() => removeProject(projIndex)}>Remove project</button>
-            </div>
-          </section>
+      {!isCollapsed && (
+        <>
           <hr className='formSeperator' />
-        </React.Fragment>
-      ))}
-      <div className='btnContainer'>
-        <button type='button' className='btn' onClick={addProject}>Add project</button>
-      </div>
+          {projects.map((proj, projIndex) => (
+            <React.Fragment key={proj.key}>
+              <h2 className='formSectionHeader'>{proj.name}</h2>
+              <section className='formSection'>
+                <label htmlFor={`${proj.key}name`} className='flexLabel'>
+                  Name:
+                  <input 
+                    type="text"
+                    name="name"
+                    id={`${proj.key}name`}
+                    value={proj.name}
+                    onChange={(e) => handleProjectChange(projIndex, 'name', e.target.value)}
+                  />
+                </label>
+                <label htmlFor={`${proj.key}githubRepo`} className='flexLabel'>
+                  GitHub Repo:
+                  <input 
+                    type="url"
+                    name="githubRepo"
+                    id={`${proj.key}githubRepo`}
+                    value={proj.githubRepo}
+                    onChange={(e) => handleProjectChange(projIndex, 'githubRepo', e.target.value)}
+                  />
+                </label>
+                <label htmlFor={`${proj.key}livePreview`} className='flexLabel'>
+                  Live Preview URL:
+                  <input 
+                    type="url"
+                    name="livePreview"
+                    id={`${proj.key}livePreview`}
+                    value={proj.livePreview}
+                    onChange={(e) => handleProjectChange(projIndex, 'livePreview', e.target.value)}
+                  />
+                </label>
+                <fieldset>
+                  <legend>Skills:</legend>
+                  <ul>
+                    {proj.skills.map((skill, skillIndex) => (
+                      <li className='formListElement' key={skillIndex}>
+                        <span className="customBullet">■</span>
+                        <input 
+                          type="text"
+                          name="skills"
+                          id={`${proj.key}Skill${skillIndex}`}
+                          aria-labelledby="skillsLabel"
+                          value={skill}
+                          onChange={(e) => handleSkillChange(projIndex, skillIndex, e.target.value)}
+                        />
+                        <button type='button' className='deleteBtn' onClick={() => removeSkill(projIndex, skillIndex)} aria-label="Delete">
+                          <img src={delete_icon} className='deleteIcon' />
+                        </button>
+                      </li>
+                    ))}            
+                  </ul>
+                  <br />
+                  <div className='btnContainer'>
+                    <button type='button' className='btn' onClick={() => addSkill(projIndex)}>Add skill</button>
+                  </div>
+                </fieldset>
+                <fieldset>
+                  <legend>Details:</legend>
+                  <ul>
+                    {proj.details.map((detail, detailIndex) => (
+                      <li className='formListElement' key={detail.key}>
+                        <span className="customBullet">■</span>
+                        <textarea rows='4' 
+                          name="details"
+                          id={detail.key}
+                          aria-labelledby="detailsLabel"
+                          value={detail.text}
+                          onChange={(e) => handleDetailChange(projIndex, detailIndex, e.target.value)}
+                        />
+                        <button type='button' className='deleteBtn' onClick={() => removeDetail(projIndex, detailIndex)} aria-label="Delete">
+                          <img src={delete_icon} className='deleteIcon' />
+                        </button>
+                      </li>
+                    ))}          
+                  </ul>
+                  <br />
+                  <div className='btnContainer'>
+                    <button type='button' className='btn' onClick={() => addDetail(projIndex)}>Add detail</button>
+                  </div>
+                </fieldset>
+                <div className='btnContainer'>
+                  <button type='button' className='btn' onClick={() => removeProject(projIndex)}>Remove project</button>
+                </div>
+              </section>
+              <hr className='formSeperator' />
+            </React.Fragment>
+          ))}
+          <div className='btnContainer'>
+            <button type='button' className='btn' onClick={addProject}>Add project</button>
+          </div>
+        </>
+      )}
     </fieldset>
   )
 }
