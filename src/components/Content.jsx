@@ -80,6 +80,10 @@ function Content() {
       />
       <ResumePreview
         name={name}
+        email={email}
+        phone={phone}
+        website={website}
+        location={location}
         userInfo={userInfo()}
         skills={skills}
         interests={interests}

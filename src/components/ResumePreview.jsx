@@ -1,5 +1,9 @@
 function ResumePreview({
   name,
+  email,
+  phone,
+  location,
+  website,
   userInfo,
   skills,
   interests,
