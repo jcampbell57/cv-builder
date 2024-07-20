@@ -18,12 +18,18 @@ function GeneralFieldset({
   setLocation,
   setSkills,
   setInterests,
+  handleInputBlur,
 }) {
 
-  const [isCollapsed, setIsCollapsed] = useState(true)
+  const [isCollapsed, setIsCollapsed] = useState(() => {
+    const collapsedState = localStorage.getItem('generalCollapsed')
+    return collapsedState ? JSON.parse(collapsedState) : true
+  })  
 
   const toggleCollapse = () => {
-    setIsCollapsed(!isCollapsed)
+    const newState = !isCollapsed
+    setIsCollapsed(newState)
+    localStorage.setItem('generalCollapsed', JSON.stringify(newState));
   }
 
   const addSkill = () => {
@@ -39,7 +45,10 @@ function GeneralFieldset({
   const removeSkill = (index) => {
     const newSkills = [...skills]
     newSkills.splice(index, 1)
-    setSkills(newSkills)
+    setSkills(newSkills)   
+    if (!newSkills.length) {
+      localStorage.setItem('resumeFormSkills', JSON.stringify(newSkills)) 
+    }
   }
 
   const addInterest = () => {
@@ -56,6 +65,9 @@ function GeneralFieldset({
     const newInterests = [...interests]
     newInterests.splice(index, 1)
     setInterests(newInterests)
+    if (!newInterests.length) {
+      localStorage.setItem('resumeFormInterests', JSON.stringify(newInterests));
+    }
   }
 
   return (
@@ -74,6 +86,7 @@ function GeneralFieldset({
               id="name"
               value={name}
               onChange={(event) => setName(event.target.value)}
+              onBlur={handleInputBlur('resumeFormName', name)}
             />
           </label>
           <label htmlFor="email" className='flexLabel'>
@@ -84,6 +97,7 @@ function GeneralFieldset({
               id="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
+              onBlur={handleInputBlur('resumeFormEmail', email)}
             />
           </label>
           <label htmlFor="phone" className='flexLabel'>
@@ -94,6 +108,7 @@ function GeneralFieldset({
               id="phone"
               value={phone}
               onChange={(event) => setPhone(event.target.value)}
+              onBlur={handleInputBlur('resumeFormPhone', phone)}
             />
           </label>
           <label htmlFor="location" className='flexLabel'>
@@ -104,6 +119,7 @@ function GeneralFieldset({
               id="location"
               value={location}
               onChange={(event) => setLocation(event.target.value)}
+              onBlur={handleInputBlur('resumeFormLocation', location)}
             />
           </label>
           <label htmlFor="website" className='flexLabel'>
@@ -114,6 +130,7 @@ function GeneralFieldset({
               id="website"
               value={website}
               onChange={(event) => setWebsite(event.target.value)}
+              onBlur={handleInputBlur('resumeFormWebsite', website)}
             />
           </label>
           <fieldset>
@@ -129,6 +146,7 @@ function GeneralFieldset({
                     aria-labelledby="skillsLabel"
                     value={skill}
                     onChange={(e) => handleSkillChange(skillIndex, e.target.value)}
+                    onBlur={handleInputBlur('resumeFormSkills', skills)}
                   />
                   <button type='button' className='deleteBtn' onClick={() => removeSkill(skillIndex)} aria-label="Delete">
                     <img src={delete_icon} className='deleteIcon' />
@@ -154,6 +172,7 @@ function GeneralFieldset({
                     aria-labelledby="interestsLabel"
                     value={interest}
                     onChange={(e) => handleInterestChange(interestIndex, e.target.value)}
+                    onBlur={handleInputBlur('resumeFormInterests', interests)}
                   />
                   <button type='button' className='deleteBtn' onClick={() => removeInterest(interestIndex)} aria-label="Delete">
                     <img src={delete_icon} className='deleteIcon' />

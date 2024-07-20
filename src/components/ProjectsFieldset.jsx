@@ -8,12 +8,18 @@ import delete_icon from '../assets/close-thick.svg'
 function ProjectsFieldset({
   projects,
   setProjects,
+  handleInputBlur,
 }) {
 
-  const [isCollapsed, setIsCollapsed] = useState(true)
+  const [isCollapsed, setIsCollapsed] = useState(() => {
+    const collapsedState = localStorage.getItem('projectsCollapsed')
+    return collapsedState ? JSON.parse(collapsedState) : true
+  })  
 
   const toggleCollapse = () => {
-    setIsCollapsed(!isCollapsed)
+    const newState = !isCollapsed
+    setIsCollapsed(newState)
+    localStorage.setItem('projectsCollapsed', JSON.stringify(newState));
   }
 
   const addProject = () => {
@@ -39,6 +45,9 @@ function ProjectsFieldset({
     const updatedProjects = [...projects]
     updatedProjects.splice(projIndex, 1)
     setProjects(updatedProjects)
+    if (!updatedProjects.length) {
+      localStorage.setItem('resumeFormProjects', JSON.stringify(updatedProjects)) 
+    }
   }
 
   const addSkill = (projIndex) => {
@@ -108,6 +117,7 @@ function ProjectsFieldset({
                     id={`${proj.key}name`}
                     value={proj.name}
                     onChange={(e) => handleProjectChange(projIndex, 'name', e.target.value)}
+                    onBlur={handleInputBlur('resumeFormProjects', projects)}
                   />
                 </label>
                 <label htmlFor={`${proj.key}githubRepo`} className='flexLabel'>
@@ -118,6 +128,7 @@ function ProjectsFieldset({
                     id={`${proj.key}githubRepo`}
                     value={proj.githubRepo}
                     onChange={(e) => handleProjectChange(projIndex, 'githubRepo', e.target.value)}
+                    onBlur={handleInputBlur('resumeFormProjects', projects)}
                   />
                 </label>
                 <label htmlFor={`${proj.key}livePreview`} className='flexLabel'>
@@ -128,6 +139,7 @@ function ProjectsFieldset({
                     id={`${proj.key}livePreview`}
                     value={proj.livePreview}
                     onChange={(e) => handleProjectChange(projIndex, 'livePreview', e.target.value)}
+                    onBlur={handleInputBlur('resumeFormProjects', projects)}
                   />
                 </label>
                 <fieldset>
@@ -143,6 +155,7 @@ function ProjectsFieldset({
                           aria-labelledby="skillsLabel"
                           value={skill}
                           onChange={(e) => handleSkillChange(projIndex, skillIndex, e.target.value)}
+                          onBlur={handleInputBlur('resumeFormProjects', projects)}
                         />
                         <button type='button' className='deleteBtn' onClick={() => removeSkill(projIndex, skillIndex)} aria-label="Delete">
                           <img src={delete_icon} className='deleteIcon' />
@@ -167,6 +180,7 @@ function ProjectsFieldset({
                           aria-labelledby="detailsLabel"
                           value={detail.text}
                           onChange={(e) => handleDetailChange(projIndex, detailIndex, e.target.value)}
+                          onBlur={handleInputBlur('resumeFormProjects', projects)}
                         />
                         <button type='button' className='deleteBtn' onClick={() => removeDetail(projIndex, detailIndex)} aria-label="Delete">
                           <img src={delete_icon} className='deleteIcon' />

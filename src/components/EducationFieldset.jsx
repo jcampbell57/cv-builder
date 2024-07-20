@@ -8,12 +8,18 @@ import delete_icon from '../assets/close-thick.svg'
 function EducationFieldset({
   education,
   setEducation,
+  handleInputBlur,
 }) {
 
-  const [isCollapsed, setIsCollapsed] = useState(true)
+  const [isCollapsed, setIsCollapsed] = useState(() => {
+    const collapsedState = localStorage.getItem('educationCollapsed')
+    return collapsedState ? JSON.parse(collapsedState) : true
+  })  
 
   const toggleCollapse = () => {
-    setIsCollapsed(!isCollapsed)
+    const newState = !isCollapsed
+    setIsCollapsed(newState)
+    localStorage.setItem('educationCollapsed', JSON.stringify(newState));
   }
 
   const addEducation = () => {
@@ -33,6 +39,15 @@ function EducationFieldset({
     const updatedEducation = [...education]
     updatedEducation[index][field] = value;
     setEducation(updatedEducation)
+  }
+
+  const removeEducation = (index) => {
+    const updatedEducation = [...education]
+    updatedEducation.splice(index, 1)
+    setEducation(updatedEducation)
+    if (!updatedEducation.length) {
+      localStorage.setItem('resumeFormEducation', JSON.stringify(updatedEducation)) 
+    }
   }
 
   const addDetail = (eduIndex) => {
@@ -62,12 +77,6 @@ function EducationFieldset({
     setEducation(updatedEducation)
   }
 
-  const removeEducation = (index) => {
-    const updatedEducation = [...education]
-    updatedEducation.splice(index, 1)
-    setEducation(updatedEducation)
-  }
-
   return (
     <fieldset className='mainFieldset'>
       <div className='dropdownContainer' onClick={toggleCollapse}>
@@ -89,6 +98,7 @@ function EducationFieldset({
                     id={`${edu.key}school`}
                     value={edu.school}
                     onChange={(e) => handleEducationChange(eduIndex, 'school', e.target.value)}
+                    onBlur={handleInputBlur('resumeFormEducation', education)}
                   />
                 </label>
                 <label htmlFor={`${edu.key}location`} className='flexLabel'>
@@ -99,6 +109,7 @@ function EducationFieldset({
                     id={`${edu.key}location`}
                     value={edu.location}
                     onChange={(e) => handleEducationChange(eduIndex, 'location', e.target.value)}
+                    onBlur={handleInputBlur('resumeFormEducation', education)}
                   />
                 </label>
                 <label htmlFor={`${edu.key}completionDate`} className='flexLabel'>
@@ -109,6 +120,7 @@ function EducationFieldset({
                     id={`${edu.key}completionDate`}
                     value={edu.completionDate}
                     onChange={(e) => handleEducationChange(eduIndex, 'completionDate', e.target.value)}
+                    onBlur={handleInputBlur('resumeFormEducation', education)}
                   />
                 </label>
                 <label htmlFor={`${edu.key}degree`} className='flexLabel'>
@@ -119,6 +131,7 @@ function EducationFieldset({
                     id={`${edu.key}degree`}
                     value={edu.degree}
                     onChange={(e) => handleEducationChange(eduIndex, 'degree', e.target.value)}
+                    onBlur={handleInputBlur('resumeFormEducation', education)}
                   />
                 </label>
                 <fieldset>
@@ -133,6 +146,7 @@ function EducationFieldset({
                           aria-labelledby="detailsLabel"
                           value={detail.text}
                           onChange={(e) => handleDetailChange(eduIndex, detailIndex, e.target.value)}
+                          onBlur={handleInputBlur('resumeFormEducation', education)}
                         />
                         <button type='button' className='deleteBtn' onClick={() => removeDetail(eduIndex, detailIndex)} aria-label="Delete">
                           <img src={delete_icon} className='deleteIcon' />

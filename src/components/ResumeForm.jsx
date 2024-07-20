@@ -24,13 +24,16 @@ function ResumeForm({
   setEducation,
   setExperience,
   setProjects,
+  handleInputBlur,
+  populateExample,
   clearForm,
 }) {
   return (
     <div className="formContainer">
-      <div className='btnContainer'>
-        <button type='button' className='btn' onClick={clearForm}>Clear form</button>
-        <button type='button' className='btn'>Print</button>
+      <div className='menuBtnContainer'>
+        <button type='button' className='btn clearBtn' onClick={clearForm}>Clear form</button>
+        <button type='button' className='btn populateBtn' onClick={populateExample}>Example data</button>
+        <button type='button' className='btn printBtn'>Print</button>
       </div>
       <form>
         <GeneralFieldset 
@@ -48,21 +51,25 @@ function ResumeForm({
             setLocation={setLocation}
             setSkills={setSkills}
             setInterests={setInterests}
+            handleInputBlur={handleInputBlur}
         />
 
-        <EducationFieldset 
+        <EducationFieldset
           education={education}
           setEducation={setEducation}
+          handleInputBlur={handleInputBlur}
         />
 
-        <ExperienceFieldset 
+        <ExperienceFieldset
           experience={experience}
           setExperience={setExperience}
+          handleInputBlur={handleInputBlur}        
         />
 
-        <ProjectsFieldset 
+        <ProjectsFieldset
           projects={projects}
           setProjects={setProjects}
+          handleInputBlur={handleInputBlur}        
         />
       </form>
     </div>
