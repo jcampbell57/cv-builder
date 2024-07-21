@@ -9,6 +9,7 @@ function GeneralFieldset({
   phone,
   website,
   location,
+  certifications,
   skills,
   interests,
   setName,
@@ -16,6 +17,7 @@ function GeneralFieldset({
   setPhone,
   setWebsite,
   setLocation,
+  setCertifications,
   setSkills,
   setInterests,
   handleInputBlur,
@@ -30,6 +32,25 @@ function GeneralFieldset({
     const newState = !isCollapsed
     setIsCollapsed(newState)
     localStorage.setItem('generalCollapsed', JSON.stringify(newState));
+  }
+
+  const addCertification = () => {
+    setCertifications([...certifications, ''])
+  }
+
+  const handleCertificationChange = (index, value) => {
+    const updatedCertifications = [...certifications]
+    updatedCertifications[index] = value;
+    setCertifications(updatedCertifications)
+  }
+
+  const removeCertification = (index) => {
+    const newCertifications = [...certifications]
+    newCertifications.splice(index, 1)
+    setCertifications(newCertifications)   
+    if (!newCertifications.length) {
+      localStorage.setItem('resumeFormCertifications', JSON.stringify(newCertifications)) 
+    }
   }
 
   const addSkill = () => {
@@ -133,6 +154,32 @@ function GeneralFieldset({
               onBlur={handleInputBlur('resumeFormWebsite', website)}
             />
           </label>
+          <fieldset>
+            <legend>Certifications:</legend>
+            <ul>
+              {certifications.map((certification, certificationIndex) => (
+                <li className='formListElement' key={`${name}Certification${certificationIndex}`}>
+                  <span className="customBullet">■</span>
+                  <input 
+                    type="text"
+                    name="certifications"
+                    id={`${name}Certification${certificationIndex}`}
+                    aria-labelledby="certificationsLabel"
+                    value={certification}
+                    onChange={(e) => handleCertificationChange(certificationIndex, e.target.value)}
+                    onBlur={handleInputBlur('resumeFormCertifications', certifications)}
+                  />
+                  <button type='button' className='deleteBtn' onClick={() => removeCertification(certificationIndex)} aria-label="Delete">
+                    <img src={delete_icon} className='deleteIcon' />
+                  </button>
+                </li>
+              ))}            
+            </ul>
+            <br />
+            <div className='btnContainer'>
+              <button type='button' className='btn' onClick={addCertification}>Add certification</button>
+            </div>
+          </fieldset>
           <fieldset>
             <legend>Skills:</legend>
             <ul>

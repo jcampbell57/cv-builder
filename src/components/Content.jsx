@@ -24,6 +24,10 @@ function Content() {
     const storedLocation = localStorage.getItem('resumeFormLocation')
     return storedLocation ? JSON.parse(storedLocation) : exampleData.general.location
   })  
+  const [certifications, setCertifications] = useState(() => {
+    const storedCertifications = localStorage.getItem('resumeFormCertifications')
+    return storedCertifications ? JSON.parse(storedCertifications) : exampleData.general.certifications
+  })  
   const [skills, setSkills] = useState(() => {
     const storedSkills = localStorage.getItem('resumeFormSkills')
     return storedSkills ? JSON.parse(storedSkills) : exampleData.general.skills
@@ -55,6 +59,7 @@ function Content() {
     setPhone('')
     setWebsite('')
     setLocation('')
+    setCertifications([])
     setSkills([])
     setInterests([])
     setEducation([])
@@ -65,6 +70,7 @@ function Content() {
     localStorage.setItem('resumeFormPhone', JSON.stringify(''))
     localStorage.setItem('resumeFormWebsite', JSON.stringify(''))
     localStorage.setItem('resumeFormLocation', JSON.stringify(''))
+    localStorage.setItem('resumeFormCertifications', JSON.stringify([]))
     localStorage.setItem('resumeFormSkills', JSON.stringify([]))
     localStorage.setItem('resumeFormInterests', JSON.stringify([]))
     localStorage.setItem('resumeFormEducation', JSON.stringify([]))
@@ -78,6 +84,7 @@ function Content() {
     setPhone(exampleData.general.phone)
     setWebsite(exampleData.general.website)
     setLocation(exampleData.general.location)
+    setCertifications(exampleData.general.certifications)
     setSkills(exampleData.general.skills)
     setInterests(exampleData.general.interests)
     setEducation(exampleData.education)
@@ -88,6 +95,7 @@ function Content() {
     localStorage.setItem('resumeFormPhone', JSON.stringify(exampleData.general.phone))
     localStorage.setItem('resumeFormWebsite', JSON.stringify(exampleData.general.website))
     localStorage.setItem('resumeFormLocation', JSON.stringify(exampleData.general.location))
+    localStorage.setItem('resumeFormCertifications', JSON.stringify(exampleData.general.certifications))
     localStorage.setItem('resumeFormSkills', JSON.stringify(exampleData.general.skills))
     localStorage.setItem('resumeFormInterests', JSON.stringify(exampleData.general.interests))
     localStorage.setItem('resumeFormEducation', JSON.stringify(exampleData.education))
@@ -128,6 +136,7 @@ function Content() {
         phone={phone}
         website={website}
         location={location}
+        certifications={certifications}
         skills={skills}
         interests={interests}
         education={education}
@@ -138,6 +147,7 @@ function Content() {
         setPhone={setPhone}
         setWebsite={setWebsite}
         setLocation={setLocation}
+        setCertifications={setCertifications}
         setSkills={setSkills}
         setInterests={setInterests}
         setEducation={setEducation}
@@ -154,6 +164,7 @@ function Content() {
         website={website}
         location={location}
         userInfo={userInfo()}
+        certifications={certifications}
         skills={skills}
         interests={interests}
         education={education}

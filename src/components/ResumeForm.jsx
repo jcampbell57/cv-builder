@@ -9,6 +9,7 @@ function ResumeForm({
   phone,
   website,
   location,
+  certifications,
   skills,
   interests,
   education,
@@ -19,6 +20,7 @@ function ResumeForm({
   setPhone,
   setWebsite,
   setLocation,
+  setCertifications,
   setSkills,
   setInterests,
   setEducation,
@@ -42,6 +44,7 @@ function ResumeForm({
             phone={phone}
             website={website}
             location={location}
+            certifications={certifications}
             skills={skills}
             interests={interests}
             setName={setName}
@@ -49,6 +52,7 @@ function ResumeForm({
             setPhone={setPhone}
             setWebsite={setWebsite}
             setLocation={setLocation}
+            setCertifications={setCertifications}
             setSkills={setSkills}
             setInterests={setInterests}
             handleInputBlur={handleInputBlur}

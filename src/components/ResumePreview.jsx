@@ -5,6 +5,7 @@ function ResumePreview({
   location,
   website,
   userInfo,
+  certifications,
   skills,
   interests,
   education,
@@ -106,18 +107,31 @@ function ResumePreview({
           </section>
         )}
 
-        {(skills.length > 0 || interests.length > 0) && (
+        {(certifications.length > 0 || skills.length > 0 || interests.length > 0) && (
           <section className="skillsInterestPreview">
             {(() => {
-              if (skills.length > 0 && interests.length === 0) {
+              if (certifications.length > 0 && skills.length === 0 && interests.length === 0) {
+                return <h3 className="previewSectionHeader eb-garamond-bold">CERTIFICATIONS</h3>;
+              } else if (certifications.length === 0 && skills.length > 0 && interests.length === 0) {
                 return <h3 className="previewSectionHeader eb-garamond-bold">SKILLS</h3>;
-              } else if (skills.length === 0 && interests.length > 0) {
+              } else if (certifications.length === 0 && skills.length === 0 && interests.length > 0) {
                 return <h3 className="previewSectionHeader eb-garamond-bold">INTERESTS</h3>;
-              } else if (skills.length > 0 && interests.length > 0) {
+              } else if (certifications.length > 0 && skills.length > 0 && interests.length === 0) {
+                return <h3 className="previewSectionHeader eb-garamond-bold">CERTIFICATIONS & SKILLS</h3>;
+              } else if (certifications.length > 0 && skills.length === 0 && interests.length > 0) {
+                return <h3 className="previewSectionHeader eb-garamond-bold">CERTIFICATIONS & INTERESTS</h3>;
+              } else if (certifications.length === 0 && skills.length > 0 && interests.length > 0) {
                 return <h3 className="previewSectionHeader eb-garamond-bold">SKILLS & INTERESTS</h3>;
+              } else if (certifications.length > 0 && skills.length > 0 && interests.length > 0) {
+                return <h3 className="previewSectionHeader eb-garamond-bold">CERTIFICATIONS, SKILLS & INTERESTS</h3>;
               }
             })()}
             <ul className="bulletedList">
+              {certifications.length > 0 && (
+                <li className="previewCertifications">
+                  <span className="eb-garamond-bold">Certifications: </span>{certifications.join(', ')}
+                </li>
+              )}
               {skills.length > 0 && (
                 <li className="previewSkills">
                   <span className="eb-garamond-bold">Skills: </span>{skills.join(', ')}
