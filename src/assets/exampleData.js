@@ -7,6 +7,7 @@ const data = {
     phone: '555-555-5555',
     website: 'Github.com/JCampbell57',
     location: 'San Francisco Bay Area',
+    certifications: [],
     skills: [
       'Ruby on Rails',
       'JavaScript',
@@ -30,7 +31,8 @@ const data = {
       school: 'California State University',
       location: 'Central Valley, CA',
       completionDate: 'May, 2017',
-      degree: 'BS, Business Administration, Finance'
+      degree: 'BS, Business Administration, Finance',
+      details: []
     },
   ],
   experience: [
