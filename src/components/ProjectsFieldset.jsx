@@ -102,7 +102,7 @@ function ProjectsFieldset({
   return (
     <fieldset className='mainFieldset'>
       <div className='dropdownContainer' onClick={toggleCollapse}>
-        <legend>Projects</legend>
+        <legend className='fieldsetHeader'>Projects</legend>
         <img src={isCollapsed ? chevron_down : chevron_up} alt={isCollapsed ? 'Expand' : 'Collapse'} className='chevronIcon'></img>
       </div>
       {!isCollapsed && (
@@ -146,7 +146,7 @@ function ProjectsFieldset({
                   />
                 </label>
                 <fieldset>
-                  <legend>Skills:</legend>
+                  <legend className='skillsLabel'>Skills:</legend>
                   <ul>
                     {proj.skills.map((skill, skillIndex) => (
                       <li className='formListElement' key={skillIndex}>
@@ -172,7 +172,7 @@ function ProjectsFieldset({
                   </div>
                 </fieldset>
                 <fieldset>
-                  <legend>Details:</legend>
+                  <legend className='detailsLabel'>Details:</legend>
                   <ul>
                     {proj.details.map((detail, detailIndex) => (
                       <li className='formListElement' key={detail.key}>

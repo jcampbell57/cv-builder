@@ -75,12 +75,13 @@ function ExperienceFieldset({
     details.splice(detailIndex, 1)
     updatedExperience[expIndex].details = details
     setExperience(updatedExperience)
+    localStorage.setItem('resumeFormExperience', JSON.stringify(updatedExperience))
   }
 
   return (
     <fieldset className='mainFieldset'>
       <div className='dropdownContainer' onClick={toggleCollapse}>
-        <legend>Experience</legend>
+        <legend className='fieldsetHeader'>Experience</legend>
         <img src={isCollapsed ? chevron_down : chevron_up} alt={isCollapsed ? 'Expand' : 'Collapse'} className='chevronIcon'></img>
       </div>
       {!isCollapsed && (
@@ -146,7 +147,7 @@ function ExperienceFieldset({
                   />          
                 </label>
                 <fieldset>
-                  <legend>Details:</legend>
+                  <legend className='detailsLabel'>Details:</legend>
                   <ul>
                     {exp.details.map((detail, detailIndex) => (
                       <li className='formListElement' key={detail.key}>

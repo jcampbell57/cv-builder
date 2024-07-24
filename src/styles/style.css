@@ -213,7 +213,7 @@ header {
     background-color: var(--active);
   }
 
-  legend {
+  .fieldsetHeader {
     font-weight: bold;
   }
 
@@ -256,7 +256,8 @@ header {
   
   input,
   textarea {
-    padding: 3px 6px;
+    padding: 0.3rem 0.6rem;
+    margin-top: 0.15rem;
 
     border: 1px solid black;
     border-radius: 4px;

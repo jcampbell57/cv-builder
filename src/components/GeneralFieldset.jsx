@@ -116,7 +116,7 @@ function GeneralFieldset({
   return (
     <fieldset className='mainFieldset'>
       <div className='dropdownContainer' onClick={toggleCollapse}>
-        <legend>Personal Info</legend>
+        <legend className='fieldsetHeader'>Personal Info</legend>
         <img src={isCollapsed ? chevron_down : chevron_up} alt={isCollapsed ? 'Expand' : 'Collapse'} className='chevronIcon'></img>
       </div>
       {!isCollapsed && (
@@ -177,7 +177,7 @@ function GeneralFieldset({
             />
           </label>
           <fieldset>
-            <legend>Certifications:</legend>
+            <legend className='certificationsLabel'>Certifications:</legend>
             <ul>
               {certifications.map((certification, certificationIndex) => (
                 <li className='formListElement' key={`${name}Certification${certificationIndex}`}>
@@ -202,7 +202,7 @@ function GeneralFieldset({
             </div>
           </fieldset>
           <fieldset>
-            <legend>Skills:</legend>
+            <legend className='skillsLabel'>Skills:</legend>
             <ul>
               {skills.map((skill, skillIndex) => (
                 <li className='formListElement' key={`${name}Skill${skillIndex}`}>
@@ -228,7 +228,7 @@ function GeneralFieldset({
             </div>
           </fieldset>
           <fieldset>
-            <legend>Interests:</legend>
+            <legend className='interestsLabel'>Interests:</legend>
             <ul>
               {interests.map((interest, interestIndex) => (
                 <li className='formListElement' key={`${name}Interest${interestIndex}`}>

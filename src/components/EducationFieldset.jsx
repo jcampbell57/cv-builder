@@ -80,7 +80,7 @@ function EducationFieldset({
   return (
     <fieldset className='mainFieldset'>
       <div className='dropdownContainer' onClick={toggleCollapse}>
-        <legend>Education</legend>
+        <legend className='fieldsetHeader'>Education</legend>
         <img src={isCollapsed ? chevron_down : chevron_up} alt={isCollapsed ? 'Expand' : 'Collapse'} className='chevronIcon'></img>
       </div>
       {!isCollapsed && (
@@ -135,7 +135,7 @@ function EducationFieldset({
                   />
                 </label>
                 <fieldset>
-                  <legend>Details:</legend>
+                  <legend className='detailsLabel'>Details:</legend>
                   <ul>
                     {edu.details.map((detail, detailIndex) => (
                       <li className='formListElement' key={detail.key}>
