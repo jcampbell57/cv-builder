@@ -162,18 +162,18 @@ function ExperienceFieldset({
                   </ul>
                   <br />
                   <div className='btnContainer'>
-                    <button type='button' className='btn' onClick={() => addDetail(expIndex)}>Add detail</button>
+                    <button type='button' className='btn blueBtn' onClick={() => addDetail(expIndex)}>Add detail</button>
                   </div>
                 </fieldset>
                 <div className='btnContainer'>
-                  <button type='button' className='btn' onClick={() => removeExperience(expIndex)}>Remove experience</button>
+                  <button type='button' className='btn redBtn' onClick={() => removeExperience(expIndex)}>Remove experience</button>
                 </div>
               </section>
               <hr className='formSeperator' />
             </React.Fragment>
           ))}
           <div className='btnContainer'>
-            <button type='button' className='btn' onClick={addExperience}>Add experience</button>
+            <button type='button' className='btn blueBtn' onClick={addExperience}>Add experience</button>
           </div>
         </>
       )}

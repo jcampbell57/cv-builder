@@ -27,16 +27,15 @@ function ResumeForm({
   setEducation,
   setExperience,
   setProjects,
-  handleInputBlur,
   populateExample,
   clearForm,
 }) {
   return (
     <div className="formContainer">
       <div className='menuBtnContainer'>
-        <button type='button' className='btn clearBtn' onClick={clearForm}>Clear form</button>
-        <button type='button' className='btn populateBtn' onClick={populateExample}>Example data</button>
-        <button type='button' className='btn printBtn'>Print</button>
+        <button type='button' className='btn redBtn' onClick={clearForm}>Clear form</button>
+        <button type='button' className='btn blueBtn' onClick={populateExample}>Example data</button>
+        <button type='button' className='btn greenBtn' onClick={() => window.print()}>Print</button>
       </div>
       <form>
         <GeneralFieldset 

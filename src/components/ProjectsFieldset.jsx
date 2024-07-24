@@ -165,7 +165,7 @@ function ProjectsFieldset({
                   </ul>
                   <br />
                   <div className='btnContainer'>
-                    <button type='button' className='btn' onClick={() => addSkill(projIndex)}>Add skill</button>
+                    <button type='button' className='btn blueBtn' onClick={() => addSkill(projIndex)}>Add skill</button>
                   </div>
                 </fieldset>
                 <fieldset>
@@ -189,18 +189,18 @@ function ProjectsFieldset({
                   </ul>
                   <br />
                   <div className='btnContainer'>
-                    <button type='button' className='btn' onClick={() => addDetail(projIndex)}>Add detail</button>
+                    <button type='button' className='btn blueBtn' onClick={() => addDetail(projIndex)}>Add detail</button>
                   </div>
                 </fieldset>
                 <div className='btnContainer'>
-                  <button type='button' className='btn' onClick={() => removeProject(projIndex)}>Remove project</button>
+                  <button type='button' className='btn redBtn' onClick={() => removeProject(projIndex)}>Remove project</button>
                 </div>
               </section>
               <hr className='formSeperator' />
             </React.Fragment>
           ))}
           <div className='btnContainer'>
-            <button type='button' className='btn' onClick={addProject}>Add project</button>
+            <button type='button' className='btn blueBtn' onClick={addProject}>Add project</button>
           </div>
         </>
       )}

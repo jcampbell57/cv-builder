@@ -39,6 +39,16 @@
   --footer-height: 3rem;
   --hover: hsl(0, 0%, 96%, 0.2);
   --active: hsl(0, 0%, 96%, 0.4);
+
+  --red-button: rgb(255, 192, 203, 0.9);
+  --red-button-hover: rgb(255, 192, 203, 0.8);
+  --red-button-active: rgb(255, 192, 203);
+  --blue-button: rgb(224, 255, 255, 0.9);
+  --blue-button-hover: rgb(224, 255, 255, 0.8);
+  --blue-button-active: rgb(224, 255, 255);
+  --green-button: rgb(152, 251, 152, 0.9);
+  --green-button-hover: rgb(152, 251, 152, 0.8);
+  --green-button-active: rgb(152, 251, 152);
 }
 
 body {
@@ -106,16 +116,63 @@ header {
     box-sizing: border-box;
   }
 
+  .menuBtnContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
   .btnContainer {
     display: flex;
-    gap: 1rem;
-    justify-content: center;
+    flex-direction: column;
+    width: 85%;
+    align-self: center;
   }
 
   .btn {
     padding: 0.5vw 1vw;
-    /* border: none;
-    border-radius: 4px; */
+  }
+
+  .redBtn {
+    background-color: var(--red-button);
+    border: 0;
+    border-radius: 6px;
+  }
+
+  .redBtn:hover {
+    background-color: var(--red-button-hover);
+  }
+
+  .redBtn:active {
+    background-color: var(--red-button-active);
+  }
+
+  .blueBtn {
+    background-color: var(--blue-button);
+    border: 0;
+    border-radius: 6px;
+  }
+
+  .blueBtn:hover {
+    background-color: var(--blue-button-hover);
+  }
+
+  .blueBtn:active {
+    background-color: var(--blue-button-active);
+  }
+
+  .greenBtn {
+    background-color: var(--green-button);
+    border: 0;
+    border-radius: 6px;
+  }
+
+  .greenBtn:hover {
+    background-color: var(--green-button-hover);
+  }
+
+  .greenBtn:active {
+    background-color: var(--green-button-active);
   }
 
   form {
@@ -175,7 +232,6 @@ header {
     display: flex;
     flex-direction: column;
     gap: 1vw;
-    /* margin-bottom: 1rem; */
   }
 
   .flexLabel {
@@ -254,7 +310,7 @@ header {
   .previewPage {
     background-color: white;
     color: black;
-    margin: 1rem;
+    margin: 1rem auto;
     box-shadow:  1px 1px 4px rgb(0, 0, 0, 0.6);
 
     aspect-ratio: 8.5 / 11;
@@ -263,8 +319,9 @@ header {
     max-width: calc((100vh - var(--header-height) - var(--footer-height) - 2rem) * (8.5 / 11));
     max-height: calc(100vh - var(--header-height) - var(--footer-height) - 2rem);
 
-    line-height: 1.1;
-    font-size: clamp(0.3rem, 1.6vw, 0.75rem);
+    line-height: 1.35;
+    letter-spacing: 0.15px;
+    font-size: clamp(0.35rem, 1.8vw, 0.75rem);
     padding: clamp(0.5rem, 1.5vw, 1rem);
     box-sizing: border-box;
   }
@@ -277,12 +334,12 @@ header {
   .previewUserInfo {
     font-size: 1rem;
     font-size: clamp(0.3rem, 1.4vw, 0.88rem);
-    border-bottom: 1px solid black;
+    border-bottom: 1.5px solid black;
     margin-bottom: clamp(0.25rem, 1vw, 0.5rem);
   }
 
   .previewSectionHeader {
-    border-bottom: 1px solid black;
+    border-bottom: 1.5px solid black;
     margin-bottom: 0.2rem
   }
 
@@ -334,4 +391,88 @@ footer > a {
 
 .githubIcon:hover {
   transform: rotate(-360deg) scale(1.2);
+}
+
+/* Mobile styling */
+
+/* @media only screen and (max-width: 760px) { */
+@media only screen and (max-width: 760px) {
+    .contentContainer {
+    flex-direction: column;
+  }
+
+  .formContainer {
+    width: unset;
+    min-height: 30vh;
+  }
+
+  .previewContainer {
+    width: unset;
+  }
+
+  .previewPage {
+    max-width: calc((70vh - var(--header-height) - var(--footer-height) - 2rem) * (8.5 / 11));
+    max-height: calc(70vh - var(--header-height) - var(--footer-height) - 2rem);
+  }
+}
+
+/* This will only apply when printing */
+@media print {
+  @page {
+    margin: 0;
+  }
+
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .previewContainer,
+  .previewContainer * {
+    visibility: visible;
+  }
+
+  .previewContainer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .previewPage {
+    box-shadow: none;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.5in !important;
+    max-width: none;
+    aspect-ratio: unset;
+    font-size: 12pt;
+    line-height: normal;
+    letter-spacing: normal;
+    box-sizing: border-box;
+  }
+
+  .previewName {
+    font-size: 24pt;
+  }
+
+  .previewUserInfo {
+    font-size: 14pt;
+  }
+
+  ::marker {
+    font-size: 0.8rem;
+  }
 }

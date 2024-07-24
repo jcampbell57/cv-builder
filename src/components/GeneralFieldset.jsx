@@ -103,15 +103,14 @@ function GeneralFieldset({
     const updatedInterests = [...interests]
     updatedInterests[index] = value;
     setInterests(updatedInterests)
+    localStorage.setItem('resumeFormInterests', JSON.stringify(updatedInterests))
   }
 
   const removeInterest = (index) => {
     const newInterests = [...interests]
     newInterests.splice(index, 1)
     setInterests(newInterests)
-    if (!newInterests.length) {
-      localStorage.setItem('resumeFormInterests', JSON.stringify(newInterests));
-    }
+    localStorage.setItem('resumeFormInterests', JSON.stringify(newInterests))
   }
 
   return (
@@ -194,7 +193,7 @@ function GeneralFieldset({
             </ul>
             <br />
             <div className='btnContainer'>
-              <button type='button' className='btn' onClick={addCertification}>Add certification</button>
+              <button type='button' className='btn blueBtn' onClick={addCertification}>Add certification</button>
             </div>
           </fieldset>
           <fieldset>
@@ -220,7 +219,7 @@ function GeneralFieldset({
             </ul>
             <br />
             <div className='btnContainer'>
-              <button type='button' className='btn' onClick={addSkill}>Add skill</button>
+              <button type='button' className='btn blueBtn' onClick={addSkill}>Add skill</button>
             </div>
           </fieldset>
           <fieldset>
@@ -245,7 +244,7 @@ function GeneralFieldset({
             </ul>
             <br />
             <div className='btnContainer'>
-              <button type='button' className='btn' onClick={addInterest}>Add interest</button>
+              <button type='button' className='btn blueBtn' onClick={addInterest}>Add interest</button>
             </div>
           </fieldset>
         </>

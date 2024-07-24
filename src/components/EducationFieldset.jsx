@@ -74,6 +74,7 @@ function EducationFieldset({
     details.splice(detailIndex, 1)
     updatedEducation[eduIndex].details = details
     setEducation(updatedEducation)
+    localStorage.setItem('resumeFormEducation', JSON.stringify(updatedEducation))
   }
 
   return (
@@ -150,18 +151,18 @@ function EducationFieldset({
                   </ul>
                   <br />
                   <div className='btnContainer'>
-                    <button type='button' className='btn' onClick={() => addDetail(eduIndex)}>Add detail</button>
+                    <button type='button' className='btn blueBtn' onClick={() => addDetail(eduIndex)}>Add detail</button>
                   </div>
                 </fieldset>
                 <div className='btnContainer'>
-                  <button type='button' className='btn' onClick={() => removeEducation(eduIndex)}>Remove education</button>
+                  <button type='button' className='btn redBtn' onClick={() => removeEducation(eduIndex)}>Remove education</button>
                 </div>
               </section>
               <hr className='formSeperator' />
             </React.Fragment>
           ))}
           <div className='btnContainer'>
-            <button type='button' className='btn' onClick={addEducation}>Add education</button>
+            <button type='button' className='btn blueBtn' onClick={addEducation}>Add education</button>
           </div>
         </>
       )}
