@@ -8,7 +8,6 @@ import delete_icon from '../assets/close-thick.svg'
 function ExperienceFieldset({
   experience,
   setExperience,
-  handleInputBlur,
 }) {
 
   const [isCollapsed, setIsCollapsed] = useState(() => {
@@ -40,15 +39,14 @@ function ExperienceFieldset({
     const updatedExperience = [...experience]
     updatedExperience[expIndex][field] = value;
     setExperience(updatedExperience)
+    localStorage.setItem('resumeFormExperience', JSON.stringify(updatedExperience))
   }
 
   const removeExperience = (expIndex) => {
     const updatedExperience = [...experience]
     updatedExperience.splice(expIndex, 1)
     setExperience(updatedExperience)
-    if (!updatedExperience.length) {
-      localStorage.setItem('resumeFormExperience', JSON.stringify(updatedExperience)) 
-    }
+    localStorage.setItem('resumeFormExperience', JSON.stringify(updatedExperience))
   }
 
   const addDetail = (expIndex) => {
@@ -68,6 +66,7 @@ function ExperienceFieldset({
     details[detailIndex].text = value;
     updatedExperience[expIndex].details = details
     setExperience(updatedExperience)
+    localStorage.setItem('resumeFormExperience', JSON.stringify(updatedExperience))
   }
 
   const removeDetail = (expIndex, detailIndex) => {
@@ -99,7 +98,6 @@ function ExperienceFieldset({
                     id={`${exp.key}employer`}
                     value={exp.employer}
                     onChange={(e) => handleExperienceChange(expIndex, 'employer', e.target.value)}
-                    onBlur={handleInputBlur('resumeFormExperience', experience)}
                   />          
                 </label>
                 <label htmlFor={`${exp.key}title`} className='flexLabel'>
@@ -110,7 +108,6 @@ function ExperienceFieldset({
                     id={`${exp.key}title`}
                     value={exp.title}
                     onChange={(e) => handleExperienceChange(expIndex, 'title', e.target.value)}
-                    onBlur={handleInputBlur('resumeFormExperience', experience)}
                   />          
                 </label>
                 <label htmlFor={`${exp.key}startDate`} className='flexLabel'>
@@ -121,7 +118,6 @@ function ExperienceFieldset({
                     id={`${exp.key}startDate`}
                     value={exp.startDate}
                     onChange={(e) => handleExperienceChange(expIndex, 'startDate', e.target.value)}
-                    onBlur={handleInputBlur('resumeFormExperience', experience)}
                   />          
                 </label>
                 <label htmlFor={`${exp.key}endDate`} className='flexLabel'>
@@ -132,7 +128,6 @@ function ExperienceFieldset({
                     id={`${exp.key}endDate`}
                     value={exp.endDate}
                     onChange={(e) => handleExperienceChange(expIndex, 'endDate', e.target.value)}
-                    onBlur={handleInputBlur('resumeFormExperience', experience)}
                   />          
                 </label>
                 <label htmlFor={`${exp.key}location`} className='flexLabel'>
@@ -143,7 +138,6 @@ function ExperienceFieldset({
                     id={`${exp.key}location`}
                     value={exp.location}
                     onChange={(e) => handleExperienceChange(expIndex, 'location', e.target.value)}
-                    onBlur={handleInputBlur('resumeFormExperience', experience)}
                   />          
                 </label>
                 <fieldset>
@@ -159,7 +153,6 @@ function ExperienceFieldset({
                           aria-labelledby="detailsLabel"
                           value={detail.text}
                           onChange={(e) => handleDetailChange(expIndex, detailIndex, e.target.value)}
-                          onBlur={handleInputBlur('resumeFormExperience', experience)}
                         />
                         <button type='button' className='deleteBtn' onClick={() => removeDetail(expIndex, detailIndex)} aria-label="Delete">
                           <img src={delete_icon} className='deleteIcon' />

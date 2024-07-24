@@ -57,19 +57,16 @@ function ResumeForm({
             setCertifications={setCertifications}
             setSkills={setSkills}
             setInterests={setInterests}
-            handleInputBlur={handleInputBlur}
         />
 
         <EducationFieldset
           education={education}
           setEducation={setEducation}
-          handleInputBlur={handleInputBlur}
         />
 
         <ExperienceFieldset
           experience={experience}
           setExperience={setExperience}
-          handleInputBlur={handleInputBlur}        
         />
 
         <ProjectsFieldset

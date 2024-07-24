@@ -49,10 +49,6 @@ function Content() {
     return storedProjects ? JSON.parse(storedProjects) : exampleData.projects
   })  
 
-  const handleInputBlur = (key, value) => {
-    localStorage.setItem(key, JSON.stringify(value))
-  }
-
   const clearForm = () => {
     setName('')
     setEmail('')
@@ -169,7 +165,6 @@ function Content() {
         setEducation={setEducation}
         setExperience={setExperience}
         setProjects={setProjects}
-        handleInputBlur={handleInputBlur}
         populateExample={populateExample}
         clearForm={clearForm}
       />

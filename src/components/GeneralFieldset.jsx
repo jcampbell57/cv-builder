@@ -21,7 +21,6 @@ function GeneralFieldset({
   setCertifications,
   setSkills,
   setInterests,
-  handleInputBlur,
 }) {
 
   const [isCollapsed, setIsCollapsed] = useState(() => {
@@ -35,6 +34,31 @@ function GeneralFieldset({
     localStorage.setItem('generalCollapsed', JSON.stringify(newState));
   }
 
+  const handleNameChange = (value) => {
+    setName(value)
+    localStorage.setItem('resumeFormName', JSON.stringify(value))
+  }
+
+  const handleEmailChange = (value) => {
+    setEmail(value)
+    localStorage.setItem('resumeFormEmail', JSON.stringify(value))
+  }
+
+  const handlePhoneChange = (value) => {
+    setPhone(value)
+    localStorage.setItem('resumeFormPhone', JSON.stringify(value))
+  }
+
+  const handleLocationChange = (value) => {
+    setLocation(value)
+    localStorage.setItem('resumeFormLocation', JSON.stringify(value))
+  }
+
+  const handleWebsiteChange = (value) => {
+    setWebsite(value)
+    localStorage.setItem('resumeFormWebsite', JSON.stringify(value))
+  }
+
   const addCertification = () => {
     setCertifications([...certifications, ''])
   }
@@ -43,15 +67,14 @@ function GeneralFieldset({
     const updatedCertifications = [...certifications]
     updatedCertifications[index] = value;
     setCertifications(updatedCertifications)
+    localStorage.setItem('resumeFormCertifications', JSON.stringify(updatedCertifications))
   }
 
   const removeCertification = (index) => {
     const newCertifications = [...certifications]
     newCertifications.splice(index, 1)
     setCertifications(newCertifications)   
-    if (!newCertifications.length) {
-      localStorage.setItem('resumeFormCertifications', JSON.stringify(newCertifications)) 
-    }
+    localStorage.setItem('resumeFormCertifications', JSON.stringify(newCertifications))
   }
 
   const addSkill = () => {
@@ -62,15 +85,14 @@ function GeneralFieldset({
     const updatedSkills = [...skills]
     updatedSkills[index] = value;
     setSkills(updatedSkills)
+    localStorage.setItem('resumeFormSkills', JSON.stringify(updatedSkills))
   }
 
   const removeSkill = (index) => {
     const newSkills = [...skills]
     newSkills.splice(index, 1)
     setSkills(newSkills)   
-    if (!newSkills.length) {
-      localStorage.setItem('resumeFormSkills', JSON.stringify(newSkills)) 
-    }
+    localStorage.setItem('resumeFormSkills', JSON.stringify(newSkills))
   }
 
   const addInterest = () => {
@@ -107,8 +129,7 @@ function GeneralFieldset({
               name="name"
               id="name"
               value={name}
-              onChange={(event) => setName(event.target.value)}
-              onBlur={handleInputBlur('resumeFormName', name)}
+              onChange={(event) => handleNameChange(event.target.value)}
             />
           </label>
           <label htmlFor="email" className='flexLabel'>
@@ -118,8 +139,7 @@ function GeneralFieldset({
               name="email"
               id="email"
               value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              onBlur={handleInputBlur('resumeFormEmail', email)}
+              onChange={(event) => handleEmailChange(event.target.value)}
             />
           </label>
           <label htmlFor="phone" className='flexLabel'>
@@ -129,8 +149,7 @@ function GeneralFieldset({
               name="phone"
               id="phone"
               value={phone}
-              onChange={(event) => setPhone(event.target.value)}
-              onBlur={handleInputBlur('resumeFormPhone', phone)}
+              onChange={(event) => handlePhoneChange(event.target.value)}
             />
           </label>
           <label htmlFor="location" className='flexLabel'>
@@ -140,8 +159,7 @@ function GeneralFieldset({
               name="location"
               id="location"
               value={location}
-              onChange={(event) => setLocation(event.target.value)}
-              onBlur={handleInputBlur('resumeFormLocation', location)}
+              onChange={(event) => handleLocationChange(event.target.value)}
             />
           </label>
           <label htmlFor="website" className='flexLabel'>
@@ -151,8 +169,7 @@ function GeneralFieldset({
               name="website"
               id="website"
               value={website}
-              onChange={(event) => setWebsite(event.target.value)}
-              onBlur={handleInputBlur('resumeFormWebsite', website)}
+              onChange={(event) => handleWebsiteChange(event.target.value)}
             />
           </label>
           <fieldset>
@@ -168,7 +185,6 @@ function GeneralFieldset({
                     aria-labelledby="certificationsLabel"
                     value={certification}
                     onChange={(e) => handleCertificationChange(certificationIndex, e.target.value)}
-                    onBlur={handleInputBlur('resumeFormCertifications', certifications)}
                   />
                   <button type='button' className='deleteBtn' onClick={() => removeCertification(certificationIndex)} aria-label="Delete">
                     <img src={delete_icon} className='deleteIcon' />
@@ -195,7 +211,6 @@ function GeneralFieldset({
                     placeholder={skillExamples[Math.floor(Math.random() * skillExamples.length)]}
                     value={skill}
                     onChange={(e) => handleSkillChange(skillIndex, e.target.value)}
-                    onBlur={handleInputBlur('resumeFormSkills', skills)}
                   />
                   <button type='button' className='deleteBtn' onClick={() => removeSkill(skillIndex)} aria-label="Delete">
                     <img src={delete_icon} className='deleteIcon' />
@@ -221,7 +236,6 @@ function GeneralFieldset({
                     aria-labelledby="interestsLabel"
                     value={interest}
                     onChange={(e) => handleInterestChange(interestIndex, e.target.value)}
-                    onBlur={handleInputBlur('resumeFormInterests', interests)}
                   />
                   <button type='button' className='deleteBtn' onClick={() => removeInterest(interestIndex)} aria-label="Delete">
                     <img src={delete_icon} className='deleteIcon' />

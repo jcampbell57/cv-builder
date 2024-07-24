@@ -39,15 +39,14 @@ function ProjectsFieldset({
     const updatedProject = [...projects]
     updatedProject[projIndex][field] = value;
     setProjects(updatedProject)
+    localStorage.setItem('resumeFormProjects', JSON.stringify(updatedProject))
   }
 
   const removeProject = (projIndex) => {
     const updatedProjects = [...projects]
     updatedProjects.splice(projIndex, 1)
     setProjects(updatedProjects)
-    if (!updatedProjects.length) {
-      localStorage.setItem('resumeFormProjects', JSON.stringify(updatedProjects)) 
-    }
+    localStorage.setItem('resumeFormProjects', JSON.stringify(updatedProjects))
   }
 
   const addSkill = (projIndex) => {
@@ -63,12 +62,14 @@ function ProjectsFieldset({
     skills[skillIndex] = value;
     updatedProject[projIndex].skills = skills
     setProjects(updatedProject)
+    localStorage.setItem('resumeFormProjects', JSON.stringify(updatedProject))
   }
 
   const removeSkill = (projIndex, skillIndex) => {
     const updatedProjects = [...projects]
     updatedProjects[projIndex].skills.splice(skillIndex, 1)
     setProjects(updatedProjects)
+    localStorage.setItem('resumeFormProjects', JSON.stringify(updatedProjects))
   }
 
   const addDetail = (projIndex) => {
@@ -88,12 +89,14 @@ function ProjectsFieldset({
     details[detailIndex].text = value;
     updatedProject[projIndex].details = details
     setProjects(updatedProject)
+    localStorage.setItem('resumeFormProjects', JSON.stringify(updatedProject))
   }
 
   const removeDetail = (projIndex, detailIndex) => {
     const updatedProjects = [...projects]
     updatedProjects[projIndex].details.splice(detailIndex, 1)
     setProjects(updatedProjects)
+    localStorage.setItem('resumeFormProjects', JSON.stringify(updatedProjects))
   }
 
   return (
@@ -118,7 +121,6 @@ function ProjectsFieldset({
                     placeholder='Facebook Clone'
                     value={proj.name}
                     onChange={(e) => handleProjectChange(projIndex, 'name', e.target.value)}
-                    onBlur={handleInputBlur('resumeFormProjects', projects)}
                   />
                 </label>
                 <label htmlFor={`${proj.key}githubRepo`} className='flexLabel'>
@@ -129,7 +131,6 @@ function ProjectsFieldset({
                     id={`${proj.key}githubRepo`}
                     value={proj.githubRepo}
                     onChange={(e) => handleProjectChange(projIndex, 'githubRepo', e.target.value)}
-                    onBlur={handleInputBlur('resumeFormProjects', projects)}
                   />
                 </label>
                 <label htmlFor={`${proj.key}livePreview`} className='flexLabel'>
@@ -140,7 +141,6 @@ function ProjectsFieldset({
                     id={`${proj.key}livePreview`}
                     value={proj.livePreview}
                     onChange={(e) => handleProjectChange(projIndex, 'livePreview', e.target.value)}
-                    onBlur={handleInputBlur('resumeFormProjects', projects)}
                   />
                 </label>
                 <fieldset>
@@ -156,7 +156,6 @@ function ProjectsFieldset({
                           aria-labelledby="skillsLabel"
                           value={skill}
                           onChange={(e) => handleSkillChange(projIndex, skillIndex, e.target.value)}
-                          onBlur={handleInputBlur('resumeFormProjects', projects)}
                         />
                         <button type='button' className='deleteBtn' onClick={() => removeSkill(projIndex, skillIndex)} aria-label="Delete">
                           <img src={delete_icon} className='deleteIcon' />
@@ -181,7 +180,6 @@ function ProjectsFieldset({
                           aria-labelledby="detailsLabel"
                           value={detail.text}
                           onChange={(e) => handleDetailChange(projIndex, detailIndex, e.target.value)}
-                          onBlur={handleInputBlur('resumeFormProjects', projects)}
                         />
                         <button type='button' className='deleteBtn' onClick={() => removeDetail(projIndex, detailIndex)} aria-label="Delete">
                           <img src={delete_icon} className='deleteIcon' />
