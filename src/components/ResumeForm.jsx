@@ -11,6 +11,7 @@ function ResumeForm({
   location,
   certifications,
   skills,
+  skillExamples,
   interests,
   education,
   experience,
@@ -46,6 +47,7 @@ function ResumeForm({
             location={location}
             certifications={certifications}
             skills={skills}
+            skillExamples={skillExamples}
             interests={interests}
             setName={setName}
             setEmail={setEmail}
@@ -73,7 +75,7 @@ function ResumeForm({
         <ProjectsFieldset
           projects={projects}
           setProjects={setProjects}
-          handleInputBlur={handleInputBlur}        
+          skillExamples={skillExamples}
         />
       </form>
     </div>

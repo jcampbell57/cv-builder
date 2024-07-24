@@ -8,7 +8,7 @@ import delete_icon from '../assets/close-thick.svg'
 function ProjectsFieldset({
   projects,
   setProjects,
-  handleInputBlur,
+  skillExamples,
 }) {
 
   const [isCollapsed, setIsCollapsed] = useState(() => {
@@ -115,6 +115,7 @@ function ProjectsFieldset({
                     type="text"
                     name="name"
                     id={`${proj.key}name`}
+                    placeholder='Facebook Clone'
                     value={proj.name}
                     onChange={(e) => handleProjectChange(projIndex, 'name', e.target.value)}
                     onBlur={handleInputBlur('resumeFormProjects', projects)}

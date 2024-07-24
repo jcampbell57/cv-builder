@@ -128,6 +128,21 @@ function Content() {
     }
   }
 
+  const skillExamples = [
+    'Ruby on Rails',
+    'React',
+    'NodeJS',
+    'Prisma ORM',
+    'JavaScript',
+    'PostgreSQL',
+    'git',
+    'HTML5',
+    'CSS3',
+    'webpack',
+    'Jest',
+    'responsive design',
+  ]
+
   return (
     <div role='main' className='contentContainer'>
       <ResumeForm
@@ -138,6 +153,7 @@ function Content() {
         location={location}
         certifications={certifications}
         skills={skills}
+        skillExamples={skillExamples}
         interests={interests}
         education={education}
         experience={experience}

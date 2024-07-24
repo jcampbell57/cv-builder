@@ -11,6 +11,7 @@ function GeneralFieldset({
   location,
   certifications,
   skills,
+  skillExamples,
   interests,
   setName,
   setEmail,
@@ -191,6 +192,7 @@ function GeneralFieldset({
                     name="skills"
                     id={`${name}Skill${skillIndex}`}
                     aria-labelledby="skillsLabel"
+                    placeholder={skillExamples[Math.floor(Math.random() * skillExamples.length)]}
                     value={skill}
                     onChange={(e) => handleSkillChange(skillIndex, e.target.value)}
                     onBlur={handleInputBlur('resumeFormSkills', skills)}
