@@ -96,6 +96,7 @@ function ExperienceFieldset({
                     type="text"
                     name="employer"
                     id={`${exp.key}employer`}
+                    placeholder='Netflix'
                     value={exp.employer}
                     onChange={(e) => handleExperienceChange(expIndex, 'employer', e.target.value)}
                   />          
@@ -106,6 +107,7 @@ function ExperienceFieldset({
                     type="text"
                     name="title"
                     id={`${exp.key}title`}
+                    placeholder='Machine Learning Intern, Research'
                     value={exp.title}
                     onChange={(e) => handleExperienceChange(expIndex, 'title', e.target.value)}
                   />          
@@ -116,6 +118,7 @@ function ExperienceFieldset({
                     type="text"
                     name="startDate"
                     id={`${exp.key}startDate`}
+                    placeholder='Jan. 2024'
                     value={exp.startDate}
                     onChange={(e) => handleExperienceChange(expIndex, 'startDate', e.target.value)}
                   />          
@@ -126,6 +129,7 @@ function ExperienceFieldset({
                     type="text"
                     name="endDate"
                     id={`${exp.key}endDate`}
+                    placeholder='Apr. 2024'
                     value={exp.endDate}
                     onChange={(e) => handleExperienceChange(expIndex, 'endDate', e.target.value)}
                   />          
@@ -136,6 +140,7 @@ function ExperienceFieldset({
                     type="text"
                     name="location"
                     id={`${exp.key}location`}
+                    placeholder='Los Gatos, California'
                     value={exp.location}
                     onChange={(e) => handleExperienceChange(expIndex, 'location', e.target.value)}
                   />          

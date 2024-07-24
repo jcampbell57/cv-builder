@@ -96,6 +96,7 @@ function EducationFieldset({
                     type="text"
                     name="school"
                     id={`${edu.key}school`}
+                    placeholder='University of California, Berkeley'
                     value={edu.school}
                     onChange={(e) => handleEducationChange(eduIndex, 'school', e.target.value)}
                   />
@@ -106,6 +107,7 @@ function EducationFieldset({
                     type="text"
                     name="location"
                     id={`${edu.key}location`}
+                    placeholder='Berkeley, CA'
                     value={edu.location}
                     onChange={(e) => handleEducationChange(eduIndex, 'location', e.target.value)}
                   />
@@ -116,6 +118,7 @@ function EducationFieldset({
                     type="text"
                     name="completionDate"
                     id={`${edu.key}completionDate`}
+                    placeholder='May, 2024'
                     value={edu.completionDate}
                     onChange={(e) => handleEducationChange(eduIndex, 'completionDate', e.target.value)}
                   />
@@ -126,6 +129,7 @@ function EducationFieldset({
                     type="text"
                     name="degree"
                     id={`${edu.key}degree`}
+                    placeholder='BA, Computer Science'
                     value={edu.degree}
                     onChange={(e) => handleEducationChange(eduIndex, 'degree', e.target.value)}
                   />

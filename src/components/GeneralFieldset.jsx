@@ -127,6 +127,7 @@ function GeneralFieldset({
               type="text"
               name="name"
               id="name"
+              placeholder='Jane Doe'
               value={name}
               onChange={(event) => handleNameChange(event.target.value)}
             />
@@ -137,6 +138,7 @@ function GeneralFieldset({
               type="email"
               name="email"
               id="email"
+              placeholder='janedoe@aol.com'
               value={email}
               onChange={(event) => handleEmailChange(event.target.value)}
             />
@@ -147,6 +149,7 @@ function GeneralFieldset({
               type="tel"
               name="phone"
               id="phone"
+              placeholder='555-555-5555'
               value={phone}
               onChange={(event) => handlePhoneChange(event.target.value)}
             />
@@ -157,6 +160,7 @@ function GeneralFieldset({
               type="text"
               name="location"
               id="location"
+              placeholder='San Francisco Bay Area'
               value={location}
               onChange={(event) => handleLocationChange(event.target.value)}
             />
@@ -167,6 +171,7 @@ function GeneralFieldset({
               type="text"
               name="website"
               id="website"
+              placeholder='github.com/username'
               value={website}
               onChange={(event) => handleWebsiteChange(event.target.value)}
             />

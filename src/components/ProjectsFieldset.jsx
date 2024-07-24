@@ -129,6 +129,7 @@ function ProjectsFieldset({
                     type="url"
                     name="githubRepo"
                     id={`${proj.key}githubRepo`}
+                    placeholder='https://github.com/username/facebook-clone'
                     value={proj.githubRepo}
                     onChange={(e) => handleProjectChange(projIndex, 'githubRepo', e.target.value)}
                   />
@@ -139,6 +140,7 @@ function ProjectsFieldset({
                     type="url"
                     name="livePreview"
                     id={`${proj.key}livePreview`}
+                    placeholder='https://facebook-clone.fly.dev/'
                     value={proj.livePreview}
                     onChange={(e) => handleProjectChange(projIndex, 'livePreview', e.target.value)}
                   />
@@ -154,6 +156,7 @@ function ProjectsFieldset({
                           name="skills"
                           id={`${proj.key}Skill${skillIndex}`}
                           aria-labelledby="skillsLabel"
+                          placeholder={skillExamples[Math.floor(Math.random() * skillExamples.length)]}
                           value={skill}
                           onChange={(e) => handleSkillChange(projIndex, skillIndex, e.target.value)}
                         />
