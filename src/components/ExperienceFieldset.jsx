@@ -89,92 +89,97 @@ function ExperienceFieldset({
           <hr className='formSeperator' />
           {experience.map((exp, expIndex) => (
             <React.Fragment key={exp.key}>
-              <h2 className='formSectionHeader'>{exp.employer}</h2>
-              <section className='formSection'>
-                <label htmlFor={`${exp.key}employer`} className='flexLabel'>
-                  Employer:
-                  <input 
-                    type="text"
-                    name="employer"
-                    id={`${exp.key}employer`}
-                    placeholder='Netflix'
-                    value={exp.employer}
-                    onChange={(e) => handleExperienceChange(expIndex, 'employer', e.target.value)}
-                  />          
-                </label>
-                <label htmlFor={`${exp.key}title`} className='flexLabel'>
-                  Title:
-                  <input 
-                    type="text"
-                    name="title"
-                    id={`${exp.key}title`}
-                    placeholder='Machine Learning Intern, Research'
-                    value={exp.title}
-                    onChange={(e) => handleExperienceChange(expIndex, 'title', e.target.value)}
-                  />          
-                </label>
-                <label htmlFor={`${exp.key}startDate`} className='flexLabel'>
-                  Start Date:
-                  <input 
-                    type="text"
-                    name="startDate"
-                    id={`${exp.key}startDate`}
-                    placeholder='Jan. 2024'
-                    value={exp.startDate}
-                    onChange={(e) => handleExperienceChange(expIndex, 'startDate', e.target.value)}
-                  />          
-                </label>
-                <label htmlFor={`${exp.key}endDate`} className='flexLabel'>
-                  End Date:
-                  <input 
-                    type="text"
-                    name="endDate"
-                    id={`${exp.key}endDate`}
-                    placeholder='Apr. 2024'
-                    value={exp.endDate}
-                    onChange={(e) => handleExperienceChange(expIndex, 'endDate', e.target.value)}
-                  />          
-                </label>
-                <label htmlFor={`${exp.key}location`} className='flexLabel'>
-                  Location:
-                  <input 
-                    type="text"
-                    name="location"
-                    id={`${exp.key}location`}
-                    placeholder='Los Gatos, California'
-                    value={exp.location}
-                    onChange={(e) => handleExperienceChange(expIndex, 'location', e.target.value)}
-                  />          
-                </label>
-                <fieldset>
-                  <legend className='detailsLabel'>Details:</legend>
-                  <ul>
-                    {exp.details.map((detail, detailIndex) => (
-                      <li className='formListElement' key={detail.key}>
-                        <span className="customBullet">■</span>
-                        <textarea rows='4'
-                          key={detail.key}
-                          name="details"
-                          id={detail.key}
-                          aria-labelledby="detailsLabel"
-                          value={detail.text}
-                          onChange={(e) => handleDetailChange(expIndex, detailIndex, e.target.value)}
-                        />
-                        <button type='button' className='deleteBtn' onClick={() => removeDetail(expIndex, detailIndex)} aria-label="Delete">
-                          <img src={delete_icon} className='deleteIcon' />
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                  <br />
+              <div className='formSectionHeaderContainer' onClick={() => handleExperienceChange(expIndex, 'collapsed', !exp.collapsed)}>
+                <h2 className='formSectionHeader'>{exp.employer.length > 0 ? exp.employer : 'New experience'}</h2>
+                <img src={exp.collapsed ? chevron_down : chevron_up} alt={isCollapsed ? 'Expand' : 'Collapse'} className='chevronIcon'></img>
+              </div>
+              {!exp.collapsed && (
+                <section className='formSection'>
+                  <label htmlFor={`${exp.key}employer`} className='flexLabel'>
+                    Employer:
+                    <input 
+                      type="text"
+                      name="employer"
+                      id={`${exp.key}employer`}
+                      placeholder='Netflix'
+                      value={exp.employer}
+                      onChange={(e) => handleExperienceChange(expIndex, 'employer', e.target.value)}
+                    />          
+                  </label>
+                  <label htmlFor={`${exp.key}title`} className='flexLabel'>
+                    Title:
+                    <input 
+                      type="text"
+                      name="title"
+                      id={`${exp.key}title`}
+                      placeholder='Machine Learning Intern, Research'
+                      value={exp.title}
+                      onChange={(e) => handleExperienceChange(expIndex, 'title', e.target.value)}
+                    />          
+                  </label>
+                  <label htmlFor={`${exp.key}startDate`} className='flexLabel'>
+                    Start Date:
+                    <input 
+                      type="text"
+                      name="startDate"
+                      id={`${exp.key}startDate`}
+                      placeholder='Jan. 2024'
+                      value={exp.startDate}
+                      onChange={(e) => handleExperienceChange(expIndex, 'startDate', e.target.value)}
+                    />          
+                  </label>
+                  <label htmlFor={`${exp.key}endDate`} className='flexLabel'>
+                    End Date:
+                    <input 
+                      type="text"
+                      name="endDate"
+                      id={`${exp.key}endDate`}
+                      placeholder='Apr. 2024'
+                      value={exp.endDate}
+                      onChange={(e) => handleExperienceChange(expIndex, 'endDate', e.target.value)}
+                    />          
+                  </label>
+                  <label htmlFor={`${exp.key}location`} className='flexLabel'>
+                    Location:
+                    <input 
+                      type="text"
+                      name="location"
+                      id={`${exp.key}location`}
+                      placeholder='Los Gatos, California'
+                      value={exp.location}
+                      onChange={(e) => handleExperienceChange(expIndex, 'location', e.target.value)}
+                    />          
+                  </label>
+                  <fieldset>
+                    <legend className='detailsLabel'>Details:</legend>
+                    <ul>
+                      {exp.details.map((detail, detailIndex) => (
+                        <li className='formListElement' key={detail.key}>
+                          <span className="customBullet">■</span>
+                          <textarea rows='4'
+                            key={detail.key}
+                            name="details"
+                            id={detail.key}
+                            aria-labelledby="detailsLabel"
+                            value={detail.text}
+                            onChange={(e) => handleDetailChange(expIndex, detailIndex, e.target.value)}
+                          />
+                          <button type='button' className='deleteBtn' onClick={() => removeDetail(expIndex, detailIndex)} aria-label="Delete">
+                            <img src={delete_icon} className='deleteIcon' />
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                    <br />
+                    <div className='btnContainer'>
+                      <button type='button' className='btn blueBtn' onClick={() => addDetail(expIndex)}>Add detail</button>
+                    </div>
+                  </fieldset>
                   <div className='btnContainer'>
-                    <button type='button' className='btn blueBtn' onClick={() => addDetail(expIndex)}>Add detail</button>
+                    <button type='button' className='btn redBtn' onClick={() => removeExperience(expIndex)}>Remove experience</button>
                   </div>
-                </fieldset>
-                <div className='btnContainer'>
-                  <button type='button' className='btn redBtn' onClick={() => removeExperience(expIndex)}>Remove experience</button>
-                </div>
-              </section>
+                </section>
+              )}
               <hr className='formSeperator' />
             </React.Fragment>
           ))}

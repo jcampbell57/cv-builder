@@ -201,7 +201,7 @@ header {
     justify-content: space-between;
     align-items: center;
 
-    padding: 0.5rem;
+    padding: min(0.5rem, 1vw) min(1rem, 2vw);
     border-radius: calc(1rem + 0.25rem);
   }
 
@@ -223,7 +223,24 @@ header {
     filter: invert(99%) sepia(8%) saturate(128%) hue-rotate(233deg) brightness(112%) contrast(92%);
   }
 
-  .formSectionHeader {
+  .formSectionHeaderContainer {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: min(0.4rem, 1vw) min(0.8rem, 2vw);
+    border-radius: calc(1rem + 0.2rem);
+  }
+
+  .formSectionHeaderContainer:hover {
+    background-color: var(--hover);
+  }
+
+  .formSectionHeaderContainer:active {
+    background-color: var(--active);
+  }
+
+.formSectionHeader {
     text-align: center;
     font-weight: bold;
   }
