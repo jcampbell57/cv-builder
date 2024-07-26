@@ -29,6 +29,7 @@ const data = {
     {
       key: uuidv4(),
       collapsed: false,
+      hidden: false,
       school: 'California State University',
       location: 'Central Valley, CA',
       completionDate: 'May, 2017',
@@ -40,6 +41,7 @@ const data = {
     {
       key: uuidv4(),
       collapsed: true,
+      hidden: false,
       employer: 'Example Workplace A',
       title: 'Full-Stack Software Developer',
       startDate: 'Jan. 2024',
@@ -55,6 +57,7 @@ const data = {
     {
       key: uuidv4(),
       collapsed: true,
+      hidden: false,
       employer: 'Example Workplace B',
       title: 'Math Teacher',
       startDate: 'July 2018',
@@ -78,6 +81,7 @@ const data = {
     {
       key: uuidv4(),
       collapsed: true,
+      hidden: false,
       employer: 'Example Workplace C',
       title: 'Production Manager',
       startDate: 'Nov. 2009',
@@ -99,6 +103,7 @@ const data = {
     {
       key: uuidv4(),
       collapsed: true,
+      hidden: false,
       name: 'odinbook',
       skills: [
         'Ruby on Rails',
@@ -128,6 +133,7 @@ const data = {
     {
       key: uuidv4(),
       collapsed: true,
+      hidden: false,
       name: 'Naval Warfare',
       skills: [
         'JavaScript', 
@@ -156,6 +162,7 @@ const data = {
     {
       key: uuidv4(),
       collapsed: true,
+      hidden: false,
       name: 'Weatherserve',
       skills: [
         'JavaScript', 
@@ -179,6 +186,7 @@ const data = {
     {
       key: uuidv4(),
       collapsed: true,
+      hidden: false,
       name: 'Things To Do',
       skills: [
         'JavaScript', 
@@ -202,6 +210,7 @@ const data = {
     {
       key: uuidv4(),
       collapsed: true,
+      hidden: false,
       name: 'Chess',
       skills: [
         'Ruby', 
