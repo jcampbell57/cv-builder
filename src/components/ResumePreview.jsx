@@ -22,86 +22,92 @@ function ResumePreview({
           </section>
         )}
 
-        {experience.length > 0 && (
+        {experience.some(exp => !exp.hidden) && (
           <section className="experiencePreview">
             <h3 className="previewSectionHeader eb-garamond-bold">WORK EXPERIENCE</h3>
             <ul>
               {experience.map(exp => (
-                <li className="previewListItem" key={exp.key}>
-                  <div className="previewFlexContainer">
-                    <h3 className="previewListHeader eb-garamond-bold">{exp.employer}</h3>
-                    <h3 className="previewListHeader eb-garamond-bold">{exp.startDate} - {exp.endDate}</h3>
-                  </div>
-                  <div className="previewFlexContainer">
-                    <span className="previewListSubheader eb-garamond-italic">{exp.title}</span>
-                    <span className="previewListSubheader eb-garamond-italic">{exp.location}</span>
-                  </div>
-                  <ul className="bulletedList">
-                    {exp.details.map(detail => (
-                      <li key={detail.key}>{detail.text}</li>
-                    ))}
-                  </ul>
-                </li>
+                !exp.hidden && (
+                  <li className="previewListItem" key={exp.key}>
+                    <div className="previewFlexContainer">
+                      <h3 className="previewListHeader eb-garamond-bold">{exp.employer}</h3>
+                      <h3 className="previewListHeader eb-garamond-bold">{exp.startDate} - {exp.endDate}</h3>
+                    </div>
+                    <div className="previewFlexContainer">
+                      <span className="previewListSubheader eb-garamond-italic">{exp.title}</span>
+                      <span className="previewListSubheader eb-garamond-italic">{exp.location}</span>
+                    </div>
+                    <ul className="bulletedList">
+                      {exp.details.map(detail => (
+                        <li key={detail.key}>{detail.text}</li>
+                      ))}
+                    </ul>
+                  </li>
+                )
               ))}
             </ul>
           </section>
         )}
 
-        {projects.length > 0 && (
+        {projects.some(proj => !proj.hidden) && (
           <section className="projectsPreview">
             <h3 className="previewSectionHeader eb-garamond-bold">PERSONAL PROJECTS</h3>
             <ul>
               {projects.map(proj => (
-                <li className="previewListItem" key={proj.key}>
-                  <div className="projectFlexContainer">
-                    <h3 className="previewListHeader eb-garamond-bold">{proj.name}</h3>
-                    {/* &nbsp; is a non-breaking space character */}
-                    {proj.skills.length > 0 && (
-                      <span className="previewListSubheader eb-garamond-italic">&nbsp;| {proj.skills.join(', ')}</span>
-                    )}
-                    <div className="linkContainer rightJustify">
-                      {proj.livePreview.length > 0 && (
-                        <a href={proj.livePreview} className="previewListLink rightJustify eb-garamond-bold-italic">Live Depoloyment</a>
+                !proj.hidden && (
+                  <li className="previewListItem" key={proj.key}>
+                    <div className="projectFlexContainer">
+                      <h3 className="previewListHeader eb-garamond-bold">{proj.name}</h3>
+                      {/* &nbsp; is a non-breaking space character */}
+                      {proj.skills.length > 0 && (
+                        <span className="previewListSubheader eb-garamond-italic">&nbsp;| {proj.skills.join(', ')}</span>
                       )}
-                      {(proj.livePreview.length > 0 && proj.githubRepo.length > 0) && (
-                        <span>&nbsp;|&nbsp;</span>
-                      )}
-                      {proj.githubRepo.length > 0 && (
-                        <a href={proj.githubRepo} className="previewListLink eb-garamond-bold-italic">GitHub Link</a>
-                      )}
+                      <div className="linkContainer rightJustify">
+                        {proj.livePreview.length > 0 && (
+                          <a href={proj.livePreview} className="previewListLink rightJustify eb-garamond-bold-italic">Live Depoloyment</a>
+                        )}
+                        {(proj.livePreview.length > 0 && proj.githubRepo.length > 0) && (
+                          <span>&nbsp;|&nbsp;</span>
+                        )}
+                        {proj.githubRepo.length > 0 && (
+                          <a href={proj.githubRepo} className="previewListLink eb-garamond-bold-italic">GitHub Link</a>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                  <ul className="bulletedList">
-                    {proj.details.map(detail => (
-                      <li key={detail.key}>{detail.text}</li>
-                    ))}
-                  </ul>
-                </li>
+                    <ul className="bulletedList">
+                      {proj.details.map(detail => (
+                        <li key={detail.key}>{detail.text}</li>
+                      ))}
+                    </ul>
+                  </li>
+                )
               ))}
             </ul>
           </section>
         )}
 
-        {education.length > 0 && (
+        {education.some(edu => !edu.hidden) && (
           <section className="educationPreview">
             <h3 className="previewSectionHeader eb-garamond-bold">EDUCATION</h3>
             <ul>
               {education.map(edu => (
-                <li className="previewListItem" key={edu.key}>
-                  <div className="previewFlexContainer">
-                    <h3 className="previewListHeader eb-garamond-bold">{edu.school}</h3>
-                    <h3 className="previewListHeader eb-garamond-bold">{edu.completionDate}</h3>
-                  </div>
-                  <div className="previewFlexContainer">
-                    <span className="previewListSubheader eb-garamond-italic">{edu.degree}</span>
-                    <span className="previewListSubheader eb-garamond-italic">{edu.location}</span>
-                  </div>
-                  <ul className="bulletedList">
-                    {edu.details.map(detail => (
-                      <li key={detail.key}>{detail.text}</li>
-                    ))}
-                  </ul>
-                </li>
+                !edu.hidden && (
+                  <li className="previewListItem" key={edu.key}>
+                    <div className="previewFlexContainer">
+                      <h3 className="previewListHeader eb-garamond-bold">{edu.school}</h3>
+                      <h3 className="previewListHeader eb-garamond-bold">{edu.completionDate}</h3>
+                    </div>
+                    <div className="previewFlexContainer">
+                      <span className="previewListSubheader eb-garamond-italic">{edu.degree}</span>
+                      <span className="previewListSubheader eb-garamond-italic">{edu.location}</span>
+                    </div>
+                    <ul className="bulletedList">
+                      {edu.details.map(detail => (
+                        <li key={detail.key}>{detail.text}</li>
+                      ))}
+                    </ul>
+                  </li>
+                )
               ))}
             </ul>
           </section>

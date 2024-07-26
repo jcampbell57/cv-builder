@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 import chevron_down from '../assets/chevron-down.svg'
 import chevron_up from '../assets/chevron-up.svg'
 import delete_icon from '../assets/close-thick.svg'
+import hidden_icon from '../assets/eye-off-outline.svg'
+import visible_icon from '../assets/eye-outline.svg'
 
 function ExperienceFieldset({
   experience,
@@ -25,6 +27,8 @@ function ExperienceFieldset({
     const updatedExperience = [...experience]
     const newExperience = {
       key: uuidv4(),
+      collapsed: false,
+      hidden: false,
       employer: '',
       title: '',
       startDate: '',
@@ -82,16 +86,31 @@ function ExperienceFieldset({
     <fieldset className='mainFieldset'>
       <div className='dropdownContainer' onClick={toggleCollapse}>
         <legend className='fieldsetHeader'>Experience</legend>
-        <img src={isCollapsed ? chevron_down : chevron_up} alt={isCollapsed ? 'Expand' : 'Collapse'} className='chevronIcon'></img>
+        <img src={isCollapsed ? chevron_down : chevron_up}
+             alt={isCollapsed ? 'Expand' : 'Collapse'}
+             className='chevronIcon'>
+        </img>
       </div>
       {!isCollapsed && (
         <>
           <hr className='formSeperator' />
           {experience.map((exp, expIndex) => (
             <React.Fragment key={exp.key}>
-              <div className='formSectionHeaderContainer' onClick={() => handleExperienceChange(expIndex, 'collapsed', !exp.collapsed)}>
-                <h2 className='formSectionHeader'>{exp.employer.length > 0 ? exp.employer : 'New experience'}</h2>
-                <img src={exp.collapsed ? chevron_down : chevron_up} alt={isCollapsed ? 'Expand' : 'Collapse'} className='chevronIcon'></img>
+              <div className='formSectionHeader'>
+                <div className='formSectionTitleContainer' onClick={() => handleExperienceChange(expIndex, 'collapsed', !exp.collapsed)}>
+                  <h2 className='formSectionTitle'>{exp.employer.length > 0 ? exp.employer : 'New experience'}</h2>
+                  <img src={exp.collapsed ? chevron_down : chevron_up}
+                       alt={exp.collapsed ? 'Expand' : 'Collapse'}
+                       className='chevronIcon'>
+                  </img>
+                </div>
+                <div className='visibilityIconContainer'
+                     onClick={(e) => handleExperienceChange(expIndex, 'hidden', !exp.hidden)}>
+                  <img src={exp.hidden ? hidden_icon : visible_icon}
+                       alt={exp.hidden ? 'Show' : 'Hide'}
+                       className='visibilityIcon'>
+                  </img>
+                </div>
               </div>
               {!exp.collapsed && (
                 <section className='formSection'>

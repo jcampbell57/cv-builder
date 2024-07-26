@@ -223,26 +223,59 @@ header {
     filter: invert(99%) sepia(8%) saturate(128%) hue-rotate(233deg) brightness(112%) contrast(92%);
   }
 
-  .formSectionHeaderContainer {
+  .formSectionHeader {
+    display: flex;
+    gap: 4px;
+  }
+
+  .formSectionTitleContainer {
     cursor: pointer;
     display: flex;
+    flex-grow: 1;
     justify-content: space-between;
     align-items: center;
     padding: min(0.4rem, 1vw) min(0.8rem, 2vw);
+    padding-right: min(0.4rem, 1vw);
     border-radius: calc(1rem + 0.2rem);
   }
 
-  .formSectionHeaderContainer:hover {
+  .formSectionTitleContainer:hover {
     background-color: var(--hover);
   }
 
-  .formSectionHeaderContainer:active {
+  .formSectionTitleContainer:active {
     background-color: var(--active);
   }
 
-.formSectionHeader {
+  .formSectionTitle {
     text-align: center;
     font-weight: bold;
+  }
+
+  .visibilityIconContainer {
+    cursor: pointer;
+    display: flex;
+    padding: min(0.4rem, 1vw);
+    border-radius: calc(1rem + 0.2rem);
+  }
+
+  .visibilityIconContainer:hover {
+    background-color: var(--hover);
+  }
+
+  .visibilityIconContainer:active {
+    background-color: var(--active);
+  }
+
+  .visibilityIconContainer:hover > .visibilityIcon {
+    /* color: #ffd700; */
+    filter: invert(69%) sepia(97%) saturate(495%) hue-rotate(357deg) brightness(105%) contrast(108%);
+  }
+
+  .visibilityIcon {
+    width: 1.3rem;
+    /* whitesmoke color: */
+    filter: invert(100%) sepia(0%) saturate(7480%) hue-rotate(201deg) brightness(107%) contrast(92%);
   }
 
   .formSection {

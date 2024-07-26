@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 import chevron_down from '../assets/chevron-down.svg'
 import chevron_up from '../assets/chevron-up.svg'
 import delete_icon from '../assets/close-thick.svg'
+import hidden_icon from '../assets/eye-off-outline.svg'
+import visible_icon from '../assets/eye-outline.svg'
 
 function EducationFieldset({
   education,
@@ -25,6 +27,8 @@ function EducationFieldset({
     const updatedEducation = [...education]
     const newEducation = {
       key: uuidv4(),
+      collapsed: false,
+      hidden: false,
       school: '',
       location: '',
       completionDate: '',
@@ -81,16 +85,31 @@ function EducationFieldset({
     <fieldset className='mainFieldset'>
       <div className='dropdownContainer' onClick={toggleCollapse}>
         <legend className='fieldsetHeader'>Education</legend>
-        <img src={isCollapsed ? chevron_down : chevron_up} alt={isCollapsed ? 'Expand' : 'Collapse'} className='chevronIcon'></img>
+        <img src={isCollapsed ? chevron_down : chevron_up}
+             alt={isCollapsed ? 'Expand' : 'Collapse'}
+             className='chevronIcon'>
+        </img>
       </div>
       {!isCollapsed && (
         <>
           <hr className='formSeperator' />
           {education.map((edu, eduIndex) => (
             <React.Fragment key={edu.key}>
-              <div className='formSectionHeaderContainer' onClick={() => handleEducationChange(eduIndex, 'collapsed', !edu.collapsed)}>
-                <h2 className='formSectionHeader'>{edu.school.length > 0 ? edu.school : 'New school'}</h2>
-                <img src={edu.collapsed ? chevron_down : chevron_up} alt={isCollapsed ? 'Expand' : 'Collapse'} className='chevronIcon'></img>
+              <div className='formSectionHeader'>
+                <div className='formSectionTitleContainer' onClick={() => handleEducationChange(eduIndex, 'collapsed', !edu.collapsed)}>
+                  <h2 className='formSectionTitle'>{edu.school.length > 0 ? edu.school : 'New school'}</h2>
+                  <img src={edu.collapsed ? chevron_down : chevron_up}
+                       alt={edu.collapsed ? 'Expand' : 'Collapse'}
+                       className='chevronIcon'>
+                  </img>
+                </div>
+                <div className='visibilityIconContainer'
+                     onClick={() => handleEducationChange(eduIndex, 'hidden', !edu.hidden)}>
+                  <img src={edu.hidden ? hidden_icon : visible_icon} 
+                       alt={edu.hidden ? 'Show' : 'Hide'} 
+                       className='visibilityIcon'>
+                  </img>
+                </div>
               </div>
               {!edu.collapsed && (
                 <section className='formSection'>

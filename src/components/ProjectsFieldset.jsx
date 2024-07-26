@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 import chevron_down from '../assets/chevron-down.svg'
 import chevron_up from '../assets/chevron-up.svg'
 import delete_icon from '../assets/close-thick.svg'
+import hidden_icon from '../assets/eye-off-outline.svg'
+import visible_icon from '../assets/eye-outline.svg'
 
 function ProjectsFieldset({
   projects,
@@ -26,6 +28,8 @@ function ProjectsFieldset({
     const updatedProjects = [...projects]
     const newProj = {
       key: uuidv4(),
+      collapsed: false,
+      hidden: false,
       name: '',
       skills: [],
       githubRepo: '',
@@ -103,16 +107,31 @@ function ProjectsFieldset({
     <fieldset className='mainFieldset'>
       <div className='dropdownContainer' onClick={toggleCollapse}>
         <legend className='fieldsetHeader'>Projects</legend>
-        <img src={isCollapsed ? chevron_down : chevron_up} alt={isCollapsed ? 'Expand' : 'Collapse'} className='chevronIcon'></img>
+        <img src={isCollapsed ? chevron_down : chevron_up}
+             alt={isCollapsed ? 'Expand' : 'Collapse'}
+             className='chevronIcon'>
+        </img>
       </div>
       {!isCollapsed && (
         <>
           <hr className='formSeperator' />
           {projects.map((proj, projIndex) => (
             <React.Fragment key={proj.key}>
-              <div className='formSectionHeaderContainer' onClick={() => handleProjectChange(projIndex, 'collapsed', !proj.collapsed)}>
-                <h2 className='formSectionHeader'>{proj.name.length > 0 ? proj.name : 'New project'}</h2>
-                <img src={proj.collapsed ? chevron_down : chevron_up} alt={isCollapsed ? 'Expand' : 'Collapse'} className='chevronIcon'></img>
+              <div className='formSectionHeader'>
+                <div className='formSectionTitleContainer' onClick={() => handleProjectChange(projIndex, 'collapsed', !proj.collapsed)}>
+                  <h2 className='formSectionTitle'>{proj.name.length > 0 ? proj.name : 'New project'}</h2>
+                  <img src={proj.collapsed ? chevron_down : chevron_up} 
+                       alt={proj.collapsed ? 'Expand' : 'Collapse'} 
+                       className='chevronIcon'>
+                  </img>
+                </div>
+                <div className='visibilityIconContainer'
+                     onClick={() => handleProjectChange(projIndex, 'hidden', !proj.hidden)}>
+                  <img src={proj.hidden ? hidden_icon : visible_icon}
+                       alt={proj.hidden ? 'Show' : 'Hide'}
+                       className='visibilityIcon'>
+                  </img>
+                </div>
               </div>
               {!proj.collapsed && (
                 <section className='formSection'>
