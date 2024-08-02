@@ -506,6 +506,7 @@ footer > a {
     bottom: 0;
     width: 100%;
     box-sizing: border-box;
+    background-color: white;
   }
 
   .previewPage {
@@ -514,6 +515,7 @@ footer > a {
     margin: 0 auto;
     padding: 0.5in !important;
     max-width: none;
+    max-height: none;
     aspect-ratio: unset;
     font-size: 12pt;
     line-height: normal;
