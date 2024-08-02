@@ -36,7 +36,7 @@
   --background-color: grey;
   --font-color: whitesmoke;
   --header-height: min(6vw, 60px);
-  --footer-height: 3rem;
+  --footer-height: min(6vw, 60px);
   --hover: hsl(0, 0%, 96%, 0.2);
   --active: hsl(0, 0%, 96%, 0.4);
 
@@ -428,7 +428,7 @@ footer {
   gap: 1rem;
 
   height: var(--footer-height);
-  font-size: 1.2rem;
+  font-size: clamp(0.6rem, 3vw, 1.2rem);
 }
 
 footer > a {
@@ -436,7 +436,7 @@ footer > a {
 }
 
 .githubIcon {
-  height: 24px;
+  height: clamp(16px, 4vw, 24px);
   transition: transform 0.3s ease-in-out;
 }
 
@@ -446,7 +446,6 @@ footer > a {
 
 /* Mobile styling */
 
-/* @media only screen and (max-width: 760px) { */
 @media only screen and (max-width: 760px) {
     .contentContainer {
     flex-direction: column;
