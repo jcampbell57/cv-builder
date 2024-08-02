@@ -459,6 +459,8 @@ footer > a {
   .formContainer {
     width: unset;
     min-height: 30vh;
+    border-bottom: 4px solid var(--font-color);
+    box-shadow: 0 1px 4px rgb(0, 0, 0, 0.6);
   }
 
   .previewContainer {
