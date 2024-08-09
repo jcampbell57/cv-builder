@@ -4,13 +4,14 @@ const data = {
   general: {
     name: 'JCampbell57',
     email: 'jcampbell57@gmail.com',
-    phone: '555-555-5555',
+    phone: '444-444-4444',
     website: 'Github.com/JCampbell57',
     location: 'San Francisco Bay Area',
     certifications: [],
     skills: [
       'Ruby on Rails',
       'JavaScript',
+      'React',
       'PostgreSQL',
       'git',
       'HTML5',
@@ -18,12 +19,11 @@ const data = {
       'webpack',
       'Jest',
       'responsive design',
+      'Test-Driven Development',
+      'RESTful APIs',
+      'Agile Methodologies'
     ],
-    interests: [
-      'Hiking', 
-      'disc golf', 
-      'video games'
-    ],
+    interests: [],
   },
   education: [
     {
@@ -50,7 +50,15 @@ const data = {
       details: [
         {
           key: uuidv4(),
-          text: 'Contribute to and help maintain a large web application built with Ruby on Rails, JavaScript, and React.',
+          text: 'Contribute to and help maintain a large web application built with Ruby on Rails, JavaScript, and React',
+        },
+        {
+          key: uuidv4(),
+          text: 'Implement new features and optimize existing codebase for improved performance',
+        },
+        {
+          key: uuidv4(),
+          text: 'Collaborate with cross-functional teams to deliver high-quality software solutions',
         },
       ],
     },
@@ -66,35 +74,15 @@ const data = {
       details: [
         {
           key: uuidv4(),
-          text: 'Served as grade level leader and member of the Instructional Leadership Team.',
+          text: 'Served as grade level leader and member of the Instructional Leadership Team',
         },
         {
           key: uuidv4(),
-          text: 'Implemented e-learning technologies and blended learning strategies to promote student learning.',
+          text: 'Integrated e-learning technologies and blended learning strategies to enhance student engagement',
         },
         {
           key: uuidv4(),
-          text: 'Measured student progress and used assessment data to improve instruction.',
-        },
-      ],
-    },
-    {
-      key: uuidv4(),
-      collapsed: true,
-      hidden: false,
-      employer: 'Example Workplace C',
-      title: 'Production Manager',
-      startDate: 'Nov. 2009',
-      endDate: 'Jan. 2017',
-      location: 'Central Valley, CA',
-      details: [
-        {
-          key: uuidv4(),
-          text: 'Oversaw production as the company grew from servicing 15 clients to more than 120.',
-        },
-        {
-          key: uuidv4(),
-          text: 'Learned and integrated innovative technologies to expand product offering and increase profitability.',
+          text: 'Utilized data-driven approaches to measure student progress and improve instructional methods',
         },
       ],
     },
@@ -118,15 +106,15 @@ const data = {
       details: [
         {
           key: uuidv4(),
-          text: 'A full-stack social media app built with Ruby on Rails; utilizing a PostgreSQL database; hosted through Fly.io',
+          text: 'Developed a full-stack social media application with user authentication, real-time updates, and infinite scroll',
         },
         {
           key: uuidv4(),
-          text: 'Utilizes OAuth for user authentication; features connecting, posting, commenting, and liking functionality',
+          text: 'Implemented core social networking features: user connections, posts, comments, and likes',
         },
         {
           key: uuidv4(),
-          text: 'Features real time updates of the timeline via Actioncable; infinite scroll functionality via the Pagy gem',
+          text: 'Leveraged ActionCable for real-time functionality and Pagy gem for efficient pagination',
         },
       ],
     },
@@ -147,15 +135,15 @@ const data = {
       details: [
         {
           key: uuidv4(),
-          text: 'A web app version of the classic board game “Battleship” with built in computer AI',
+          text: 'Built a web-based version of "Battleship" with an intelligent computer opponent',
         },
         {
           key: uuidv4(),
-          text: 'Features responsive UI/UX for accessibility with any screen size',
+          text: 'Developed responsive UI/UX for cross-device compatibility',
         },
         {
           key: uuidv4(),
-          text: 'Leverages Jest to test various functionalities',
+          text: 'Implemented comprehensive unit testing using Jest',
         },
       ],
     },
@@ -175,11 +163,15 @@ const data = {
       details: [
         {
           key: uuidv4(),
-          text: 'A web-based weather application that leverages WeatherAPI to deliver real-time weather information',
+          text: 'Created a weather application integrating WeatherAPI for real-time data',
         },
         {
           key: uuidv4(),
-          text: 'Features 5-day forecast and dynamic icons dependant on weather conditions',
+          text: 'Designed an intuitive interface displaying current conditions and 5-day forecasts',
+        },
+        {
+          key: uuidv4(),
+          text: 'Implemented dynamic weather icons to enhance user experience',
         },
       ],
     },
@@ -199,11 +191,11 @@ const data = {
       details: [
         {
           key: uuidv4(),
-          text: 'A Todo List web app featuring project categorization and localStorage utilization',
+          text: 'Developed a task management application with project categorization and local storage',
         },
         {
           key: uuidv4(),
-          text: 'Makes use of object-oriented principles for increased maintainability and extensibility',
+          text: 'Applied object-oriented programming principles for improved code organization and scalability',
         },
       ],
     },
@@ -222,11 +214,11 @@ const data = {
       details: [
         {
           key: uuidv4(),
-          text: 'A Chess game utilizing a command-line interface with built in computer AI',
+          text: 'Built a command-line chess game played with a computer opponen',
         },
         {
           key: uuidv4(),
-          text: 'Leverages RSpec to test various functionalities',
+          text: 'Utilized test-driven development practices with RSpec',
         },
       ],
     },
