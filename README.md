@@ -61,10 +61,6 @@ This project helped to reinforce the following skills:
 
 ## Behind the scenes
 
-### Notes
-
-- One of the biggest challenges with this project seems to be styling the resume preview to closely match what is actually printed on many different screen sizes. I suspect the solution will involve adding more media queries to handle each screen size.
-
 ### Improvements
 
 This project could be improved with:
