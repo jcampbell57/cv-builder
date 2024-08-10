@@ -209,7 +209,7 @@ const data = {
         'RSpec', 
         'git',
       ],
-      githubRepo: 'https://github.com/jcampbell57/odin-todo-list',
+      githubRepo: 'https://github.com/jcampbell57/ruby_chess',
       livePreview: 'https://replit.com/@jcampbell57/Chess#main.rb',
       details: [
         {
